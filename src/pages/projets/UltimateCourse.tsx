@@ -52,7 +52,7 @@ export default function UltimateCoursePage({ theme, onThemeToggle }: Props) {
             style={{ border: '1px solid var(--border-subtle)', aspectRatio: '16/9' }}
           >
             <video controls className="w-full h-full object-cover">
-              <source src="/projets/ultimatecourse/2026-06-17 21-53-22.mp4" type="video/mp4" />
+              <source src="/projets/ultimatecourse/ultimatecourse-compressed.mp4" type="video/mp4" />
               Votre navigateur ne supporte pas la lecture vidéo.
             </video>
           </div>
