@@ -38,7 +38,7 @@ export default function Experience() {
                       </p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      {exp.enCours && <span className="badge-violet">En cours</span>}
+                      
                       <span className="text-[0.78rem] font-mono whitespace-nowrap" style={{ color: 'var(--text-muted)' }}>
                         {exp.periode}
                       </span>
@@ -138,7 +138,7 @@ export default function Experience() {
                 <span className="w-3 h-3 rounded-full z-10" style={{ backgroundColor: 'var(--text-muted)' }} />
               </div>
               <p className="text-sm pt-1.5" style={{ color: 'var(--text-muted)' }}>
-                Début du B.U.T. Informatique
+                2024 - Début du B.U.T. Informatique
               </p>
             </div>
           </div>

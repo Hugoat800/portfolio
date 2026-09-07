@@ -71,9 +71,9 @@ export default function APropos() {
           {/* Colonne droite */}
           <div className="flex flex-col gap-5">
             <p className="leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-              Étudiant en{' '}
+              Étudiant en {'   '}
               <strong className="font-semibold" style={{ color: 'var(--text-primary)' }}>
-                2ème année de B.U.T. Informatique
+                {'     '}3ème année de B.U.T. Informatique
               </strong>
               , parcours Réalisation d'applications, à l'IUT Lyon 1. Je termine actuellement un
               stage de deux mois chez nPerf, où je développe une application web en React et PHP.

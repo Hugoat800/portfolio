@@ -4,9 +4,9 @@ interface QuickInfoItem {
 }
 
 const QUICK_INFO: QuickInfoItem[] = [
-  { value: '2+',     label: 'ans de formation' },
-  { value: '6+',     label: 'projets réalisés' },
-  { value: '20+',    label: 'technologies' },
+  { value: '2+',     label: 'Années de formation' },
+  { value: '6+',     label: 'Projets réalisés' },
+  { value: '20+',    label: 'Technologies' },
 ]
 
 function scrollToId(id: string): void {
