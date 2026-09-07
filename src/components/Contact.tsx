@@ -15,7 +15,7 @@ interface LienSocial {
 const LIENS_SOCIAUX: LienSocial[] = [
   { label: 'GitHub',   href: 'https://github.com/Hugoat800',  icon: '/logo/github-6980894_640.webp' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hugo-vitry-3a9a78333', icon: '/logo/LinkedIn_icon.svg.webp'  },
-  { label: 'C.V.',   href: '/public/CV_VITRY_Hugo_V7.pdf',              icon: '/logo/337946.png'   },
+  { label: 'C.V.',   href: '/CV_VITRY_Hugo_V7.pdf',              icon: '/logo/337946.png'   },
 ] 
 
 export default function Contact() {
