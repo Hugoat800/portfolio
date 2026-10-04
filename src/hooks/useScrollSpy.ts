@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function useScrollSpy(
-  sectionIds: string[],
-  offsetRatio = 0.3,
-): string {
+export function useScrollSpy(sectionIds: readonly string[], offsetRatio = 0.3): string {
   const [activeId, setActiveId] = useState<string>(sectionIds[0] ?? '')
 
   useEffect(() => {
@@ -36,9 +33,7 @@ export function useScrollSpy(
         }
 
         // Sinon on garde la section la plus proche de la ligne (par son bord le plus proche)
-        const distance = top > referenceLine
-          ? top - referenceLine
-          : referenceLine - bottom
+        const distance = top > referenceLine ? top - referenceLine : referenceLine - bottom
         if (distance < bestDistance) {
           bestDistance = distance
           current = id

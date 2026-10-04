@@ -1,0 +1,86 @@
+import type { Project } from '../types'
+
+export const PROJECTS: Project[] = [
+  {
+    id: 1,
+    slug: 'team-jardin',
+    type: 'etudiant',
+    year: '2025',
+    technologies: ['PHP', 'JavaScript', 'HTML', 'CSS', 'MySQL', 'Figma'],
+    skills: ['realiser', 'gerer', 'conduire', 'collaborer'],
+    links: {
+      source: null,
+      website: null,
+    },
+    image: '/projets/teamjardin/image.png',
+    video: '/projets/teamjardin/PrésentationdusiteTeamJardin.mp4',
+  },
+  {
+    id: 5,
+    slug: 'movietor',
+    type: 'etudiant',
+    year: '2026',
+    technologies: ['Kotlin', 'Android Studio', 'Firebase'],
+    skills: ['realiser', 'gerer', 'collaborer'],
+    links: {
+      source: null,
+      website: null,
+    },
+    image: '/projets/movietor/movieTor.png',
+    video: '/projets/movietor/videoMovieTor.mp4',
+  },
+  {
+    id: 6,
+    slug: 'lumiere-mobilites',
+    type: 'etudiant',
+    year: '2025',
+    technologies: ['Java', 'Swing', 'JXMapViewer'],
+    skills: ['realiser', 'optimiser', 'collaborer'],
+    links: {
+      source: null,
+      website: null,
+    },
+    image: '/projets/lumiere/lumiere.png',
+    video: '/projets/lumiere/2026-06-17-20-17-04.mp4',
+  },
+  {
+    id: 7,
+    slug: 'ultimatecourse',
+    type: 'etudiant',
+    year: '2026',
+    technologies: ['PHP', 'Symfony', 'MySQL', 'Twig', 'Bootstrap', 'Doctrine ORM'],
+    skills: ['realiser', 'gerer', 'collaborer'],
+    links: {
+      source: 'https://forge.univ-lyon1.fr/p2401392/ultimatecourse',
+      website: null,
+    },
+    image: '/projets/ultimatecourse/ultimatecourse.png',
+    video: '/projets/ultimatecourse/ultimatecourse-compressed.mp4',
+  },
+  {
+    id: 8,
+    slug: 'stage-nperf',
+    type: 'stage',
+    year: '2026',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'PHP'],
+    skills: ['realiser', 'optimiser', 'administrer', 'collaborer', 'conduire'],
+    links: {
+      source: null,
+      website: 'https://www.nperf.com',
+    },
+  },
+  {
+    id: 9,
+    slug: 'annuaire',
+    type: 'etudiant',
+    year: '2024',
+    technologies: ['C'],
+    skills: ['realiser', 'optimiser', 'gerer', 'conduire', 'collaborer'],
+    links: {
+      source: null,
+      website: null,
+    },
+    image: '/projets/annuaire/annuaire.png',
+    video: '/projets/annuaire/annuaire.mp4',
+  },
+]

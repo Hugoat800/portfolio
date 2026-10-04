@@ -1,0 +1,807 @@
+{
+  "meta": {
+    "title": "Hugo Vitry - Developer",
+    "description": "Hugo Vitry’s portfolio. Computer science student in Lyon, web and mobile projects, and professional experience."
+  },
+  "nav": {
+    "accueil": "Home",
+    "a-propos": "About",
+    "competences": "Skills",
+    "technos": "Tools",
+    "projets": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "sections": {
+    "a-propos": {
+      "eyebrow": "A little context",
+      "title": "About me"
+    },
+    "competences": {
+      "eyebrow": "French B.U.T. computer science curriculum",
+      "title": "What I’m learning"
+    },
+    "technos": {
+      "eyebrow": "Across my projects",
+      "title": "My tools"
+    },
+    "projets": {
+      "eyebrow": "Selected work",
+      "title": "Projects"
+    },
+    "experience": {
+      "eyebrow": "Education & experience",
+      "title": "My background"
+    },
+    "contact": {
+      "eyebrow": "What’s next",
+      "title": "Let’s talk"
+    }
+  },
+  "common": {
+    "home": "Back to home",
+    "navigation": "Main navigation",
+    "language": "Site language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "lightTheme": "Switch to light theme",
+    "darkTheme": "Switch to dark theme",
+    "level": "Level {{level}}",
+    "usedIn": "Used in",
+    "filterSkill": "Filter by skill: {{skill}}",
+    "readProject": "Explore the project",
+    "filterType": "Filter by project type",
+    "filterCategory": "Filter tools by category",
+    "clearFilter": "Clear filter",
+    "projectCount_one": "{{count}} project",
+    "projectCount_other": "{{count}} projects",
+    "noProjects": "No projects match these filters.",
+    "all": "All",
+    "copy": "Copy",
+    "copyValue": "Copy {{value}}",
+    "copied": "Copied!",
+    "error": "Could not copy. Select the text or use the link instead.",
+    "backTop": "Back to top",
+    "skip": "Skip to content",
+    "notFound": "This page does not exist.",
+    "backProjects": "Back to projects",
+    "source": "Source code",
+    "website": "Project website",
+    "videoFallback": "Your browser cannot play this video.",
+    "downloadVideo": "Download the video",
+    "preview": "Preview - {{project}}",
+    "projectSkills": "Skills in practice",
+    "nextProject": "Next project"
+  },
+  "projectTypes": {
+    "tous": "All projects",
+    "etudiant": "Student project",
+    "stage": "Internship",
+    "personnel": "Personal project"
+  },
+  "hero": {
+    "location": "Lyon, France · Computer science student",
+    "role": "Web & application development.",
+    "description": "From a landscaping team’s schedule to a form at nPerf: I learn by building applications that address practical needs.",
+    "projects": "View projects",
+    "contact": "Get in touch",
+    "availability": "Work-study placement or internship · 2026-2027",
+    "caption": "Behind the project",
+    "scroll": "About me"
+  },
+  "about": {
+    "paragraphs": [
+      "I’m in my third year of the B.U.T. computer science programme at IUT Lyon 1, specialising in application development. My projects have covered web, mobile and algorithms, often as part of a team.",
+      "At nPerf, I worked on a server-hosting request form using React, TypeScript and PHP. Code reviews taught me to revisit my choices: split components, improve state management and consider accessibility.",
+      "I’m looking for a work-study placement or a longer internship for 2026-2027 to keep learning within a development team."
+    ],
+    "interestsTitle": "Outside my projects",
+    "interests": ["Video games", "Climbing", "Video editing", "Streaming"],
+    "facts": [
+      {
+        "label": "Education",
+        "value": "B.U.T. Computer Science · Year 3"
+      },
+      {
+        "label": "Location",
+        "value": "Lyon, France"
+      },
+      {
+        "label": "Looking for",
+        "value": "Work-study placement / internship"
+      },
+      {
+        "label": "English",
+        "value": "B2 level"
+      }
+    ]
+  },
+  "contact": {
+    "intro": "I’m looking for a work-study placement or a six-month internship for 2026-2027. To discuss an opportunity or ask a question, send me an email.",
+    "email": "Email",
+    "phone": "Phone",
+    "socials": "Social profiles and résumé",
+    "resume": "Résumé · French"
+  },
+  "experience": {
+    "entries": [
+      {
+        "date": "2026",
+        "title": "Web developer · Internship",
+        "organization": "nPerf · Villeurbanne",
+        "description": "Redesigned the server-hosting request form: React/TypeScript interface, PHP validation and automatic osTicket creation.",
+        "project": "stage-nperf"
+      },
+      {
+        "date": "Since 2024",
+        "title": "B.U.T. Computer Science",
+        "organization": "IUT Lyon 1 · Application development",
+        "description": "Studying application development, algorithms, data and project management. Team projects from requirements through to working software."
+      }
+    ]
+  },
+  "categories": {
+    "Développement": "Development",
+    "Frontend": "Frontend",
+    "Backend": "Backend",
+    "Frameworks": "Frameworks",
+    "Base de données": "Data",
+    "DevOps": "DevOps",
+    "Outils": "Tools"
+  },
+  "skills": {
+    "realiser": {
+      "label": "Build",
+      "description": "Develop software to meet a client’s needs.",
+      "levels": [
+        "Develop simple applications",
+        "Turn requirements into a complete application",
+        "Adapt applications to multiple platforms"
+      ],
+      "learnings": [
+        "Design and implement solutions",
+        "Write and implement functional specifications",
+        "Apply good design and programming practices",
+        "Verify application quality through testing",
+        "Choose and implement suitable architectures",
+        "Integrate solutions into a production environment"
+      ]
+    },
+    "optimiser": {
+      "label": "Optimise",
+      "description": "Optimise software against specific criteria.",
+      "levels": [
+        "Understand and build algorithms",
+        "Choose suitable algorithms for a given problem",
+        "Analyse and optimise applications"
+      ],
+      "learnings": [
+        "Analyse a problem methodically",
+        "Compare algorithms for common problems",
+        "Choose suitable complex data structures",
+        "Understand data security requirements",
+        "Anticipate the results of different metrics",
+        "Profile, analyse and explain code behaviour"
+      ]
+    },
+    "administrer": {
+      "label": "Administer",
+      "description": "Install, configure and maintain infrastructure, services and networks.",
+      "levels": [
+        "Install and configure a workstation",
+        "Deploy services within a network architecture"
+      ],
+      "learnings": [
+        "Identify hardware and software components",
+        "Install and configure an operating system",
+        "Design and develop communicating applications",
+        "Use virtualised servers and network services",
+        "Secure system services and data"
+      ]
+    },
+    "gerer": {
+      "label": "Manage data",
+      "description": "Design, manage and use business data.",
+      "levels": ["Design and implement a database", "Optimise and secure a database"],
+      "learnings": [
+        "Update and query a relational database",
+        "Design a database from requirements",
+        "Optimise business data models",
+        "Ensure data security",
+        "Organise data reporting and visualisation"
+      ]
+    },
+    "conduire": {
+      "label": "Lead projects",
+      "description": "Organise software projects using traditional or agile methods.",
+      "levels": ["Identify customer and user business needs", "Apply a project tracking process"],
+      "learnings": [
+        "Understand customer and user needs",
+        "Set up project management tools",
+        "Identify stakeholders and development phases",
+        "Document customer requirements",
+        "Define and implement project tracking"
+      ]
+    },
+    "collaborer": {
+      "label": "Collaborate",
+      "description": "Work effectively within a development team.",
+      "levels": [
+        "Identify your strengths for teamwork",
+        "Understand your role and responsibilities within a team",
+        "Manage a development team"
+      ],
+      "learnings": [
+        "Understand the digital ecosystem",
+        "Identify each team member’s role",
+        "Develop interpersonal skills for teamwork",
+        "Follow a process to join a development team",
+        "Report on professional work",
+        "Organise and share technology research"
+      ]
+    }
+  },
+  "projects": {
+    "team-jardin": {
+      "title": "Team Jardin",
+      "context": "SAE S3.01 · B.U.T. Computer Science, Year 2",
+      "description": "A web application for a landscaping business: scheduling, invoicing and an employee portal.",
+      "sections": [
+        {
+          "title": "Context",
+          "paragraphs": [
+            "Our team of four - Sébastien Tremillon, Armin Osmanovic, Romain Duval-Cifoux and myself - designed and built this application during SAE S3.01 to address the daily needs of a small landscaping business.",
+            "The application combines a lightweight ERP and invoicing software, with the simplicity of tools such as Facture.net and the operational scheduling features of an ERP. Its centralised interface was designed for a business of 5 to 10 people."
+          ],
+          "features": []
+        },
+        {
+          "title": "Users",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Manager",
+              "description": "Manages schedules, quotes and invoices, approves leave and oversees the business."
+            },
+            {
+              "title": "Employee",
+              "description": "Views their schedule and job details, and submits leave requests."
+            },
+            {
+              "title": "Customer",
+              "description": "Views invoices and job progress through a secure personal portal."
+            }
+          ]
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Business website",
+              "description": "Project showcase, customer reviews and a contact form."
+            },
+            {
+              "title": "Scheduling",
+              "description": "Daily, weekly and monthly views, staff assignments and automatic availability checks."
+            },
+            {
+              "title": "Invoicing",
+              "description": "Custom quotes and invoices, PDF generation, payment tracking and automatic reminders."
+            },
+            {
+              "title": "Employee portal",
+              "description": "Personal schedules, upcoming jobs and online leave requests."
+            },
+            {
+              "title": "Customer portal",
+              "description": "Invoice and job tracking, profile updates and notifications before visits."
+            }
+          ]
+        },
+        {
+          "title": "Design process",
+          "paragraphs": [
+            "We compared ERP tools (Axonaut, Odoo), invoicing software (Facture.net, Qonto) and scheduling tools (Calendly, Trello). We prioritised needs with MoSCoW, created Figma mockups and UML diagrams, and planned the work using WBS and Gantt charts.",
+            "This was our first project with a structured application architecture. We used MVC to separate views, data and business logic."
+          ],
+          "features": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "I worked across the development cycle: requirements, Figma mockups, PHP/MySQL development and deployment on DigitalOcean. My work included PDF invoice generation and the scheduling interface with three time views.",
+          "learnings": [
+            "Design and implement solutions",
+            "Write and implement functional specifications",
+            "Apply good design and programming practices",
+            "Verify application quality through testing"
+          ]
+        },
+        {
+          "id": "gerer",
+          "description": "We designed the conceptual data model from requirements and implemented MySQL with referential integrity. Scheduling queries were optimised to check employee availability.",
+          "learnings": [
+            "Design a database from requirements",
+            "Update and query a relational database",
+            "Ensure data security"
+          ]
+        },
+        {
+          "id": "conduire",
+          "description": "We used MoSCoW, WBS, Gantt charts and UML to prioritise, plan and document the project and meet deadlines.",
+          "learnings": [
+            "Understand customer and user needs",
+            "Set up project management tools",
+            "Identify stakeholders and development phases",
+            "Document customer requirements"
+          ]
+        },
+        {
+          "id": "collaborer",
+          "description": "The four-person team shared responsibilities, using GitHub for version control, Discord for daily communication and Google Docs for the design report.",
+          "learnings": [
+            "Identify each team member’s role",
+            "Develop interpersonal skills for teamwork",
+            "Report on professional work"
+          ]
+        }
+      ]
+    },
+    "movietor": {
+      "title": "MovieTor",
+      "context": "Mobile development coursework · B.U.T. Computer Science",
+      "description": "An Android app to discover films, series, actors and their connections, with a watchlist and favourites.",
+      "sections": [
+        {
+          "title": "Context",
+          "paragraphs": [
+            "Leny Arizzi, Aurélien Claudin and I took a mobile development assignment beyond its initial scope, building an Android application around a film and series database.",
+            "An external film API supplies titles, actors, ratings, trailers and cast information. Firebase handles authentication and persistent personal lists."
+          ],
+          "features": []
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Watchlist",
+              "description": "Save films and series to watch later."
+            },
+            {
+              "title": "Favourites",
+              "description": "Mark favourite titles for quick access."
+            },
+            {
+              "title": "Video clips",
+              "description": "Watch trailers and clips from a title’s detail page."
+            },
+            {
+              "title": "Actor profiles",
+              "description": "Explore actor information and connections to films and series."
+            },
+            {
+              "title": "Ratings and reviews",
+              "description": "View ratings to help choose what to watch."
+            },
+            {
+              "title": "Search",
+              "description": "Search the available film and series catalogue."
+            }
+          ]
+        },
+        {
+          "title": "Team",
+          "paragraphs": [
+            "Leny Arizzi, Aurélien Claudin and I split the work by module: catalogue, detail screens and personal lists. Each of us contributed to the app’s screens and features."
+          ],
+          "features": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "I developed Android screens in Kotlin and integrated the external API. I worked particularly on connections between actors and titles, and embedded video clips.",
+          "learnings": [
+            "Design and implement solutions",
+            "Write and implement functional specifications",
+            "Apply good design and programming practices",
+            "Adapt applications to multiple platforms"
+          ]
+        },
+        {
+          "id": "gerer",
+          "description": "I integrated Firebase Authentication so users could maintain their own persistent watchlist and favourites.",
+          "learnings": ["Ensure data security"]
+        },
+        {
+          "id": "collaborer",
+          "description": "We coordinated the work across three developers to keep independently built screens consistent.",
+          "learnings": [
+            "Identify each team member’s role",
+            "Develop interpersonal skills for teamwork"
+          ]
+        }
+      ]
+    },
+    "lumiere-mobilites": {
+      "title": "Lumière Mobilités",
+      "context": "Development project · B.U.T. Computer Science, Semester 2",
+      "description": "A Java/Swing application comparing route optimisation algorithms for Lyon’s Festival of Lights.",
+      "sections": [
+        {
+          "title": "Context",
+          "paragraphs": [
+            "Antoine Panouillot, Nicolas Manesse and I built a tool to optimise routes between Festival of Lights locations using travelling salesman problem (TSP) algorithms.",
+            "The application supports Euclidean points on a custom coordinate plot and geographical points on an interactive map using JXMapViewer and OpenStreetMap tiles."
+          ],
+          "features": []
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Two visualisations",
+              "description": "Switch between a Euclidean plot and a geographical map according to the loaded data."
+            },
+            {
+              "title": "File import",
+              "description": "Import point sets from text files, with automatic type detection."
+            },
+            {
+              "title": "Random generation",
+              "description": "Generate Euclidean point sets to test the algorithms."
+            },
+            {
+              "title": "Four algorithms",
+              "description": "Greedy, random, insertion and a custom greedy algorithm with 2-Opt optimisation."
+            },
+            {
+              "title": "Interactive editing",
+              "description": "Add or remove points on the map with clicks and a context menu."
+            },
+            {
+              "title": "Route comparison",
+              "description": "Save algorithm results and compare total distances."
+            }
+          ]
+        },
+        {
+          "title": "Algorithms",
+          "paragraphs": [
+            "The greedy algorithm repeatedly chooses the nearest unvisited point. Random ordering provides a baseline. Insertion adds each point where it increases route length the least. Our custom approach starts with a greedy route and applies 2-Opt improvements to remove crossings and reduce total distance."
+          ],
+          "features": []
+        },
+        {
+          "title": "Team",
+          "paragraphs": [
+            "Antoine Panouillot, Nicolas Manesse and I shared the algorithm, data model and graphical interface work."
+          ],
+          "features": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "I developed a Swing interface with GridBagLayout, interchangeable views using CardLayout and JXMapViewer integration with pan, zoom and point selection.",
+          "learnings": [
+            "Design and implement solutions",
+            "Apply good design and programming practices",
+            "Integrate solutions into a production environment"
+          ]
+        },
+        {
+          "id": "optimiser",
+          "description": "I implemented and compared greedy, insertion and random algorithms, plus a custom approach with 2-Opt. The comparison feature makes the differences in route length visible.",
+          "learnings": [
+            "Analyse a problem methodically",
+            "Compare algorithms for common problems",
+            "Choose suitable complex data structures"
+          ]
+        },
+        {
+          "id": "collaborer",
+          "description": "Our three-person team coordinated the algorithm layer, Euclidean/geographical data model and user interface.",
+          "learnings": [
+            "Identify each team member’s role",
+            "Develop interpersonal skills for teamwork"
+          ]
+        }
+      ]
+    },
+    "ultimatecourse": {
+      "title": "UltimateCourse",
+      "context": "Graded Symfony assignment · B.U.T. Computer Science, Year 2",
+      "description": "A Symfony shopping-list application with a multilingual catalogue, spending statistics and administration tools.",
+      "sections": [
+        {
+          "title": "Context",
+          "paragraphs": [
+            "Aurélien Claudin, Leny Arizzi and I built a V0 shopping-list application for a fictional entrepreneur as a proof of concept intended for investors. This second-year assignment explored Symfony beyond basic CRUD.",
+            "The technical requirements included Voter permissions, signup email verification, multilingual business data and custom validation constraints."
+          ],
+          "features": []
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Secure authentication",
+              "description": "Registration and login with email verification."
+            },
+            {
+              "title": "Shopping lists",
+              "description": "Create, view and delete shopping lists, add products and manage quantities."
+            },
+            {
+              "title": "Spending statistics",
+              "description": "Track total spending, average item cost, the most and least expensive items, and category breakdowns."
+            },
+            {
+              "title": "Multilingual interface",
+              "description": "French, English and Japanese, with automatic price conversion to the local currency."
+            },
+            {
+              "title": "Administration",
+              "description": "Full CRUD for products, product types and shops."
+            },
+            {
+              "title": "Custom validation",
+              "description": "Validate entries, including a forbidden-word constraint."
+            }
+          ]
+        },
+        {
+          "title": "Technical choices",
+          "paragraphs": [
+            "Gedmo Translatable stores translations of products, types and shops alongside Doctrine entities. SymfonyCasts Verify Email handles signup verification, with confirmation messages sent through Gmail. Faker PHP generates realistic test fixtures. Symfony Voters manage permissions between regular users and administrators, rather than relying on simple role checks in controllers."
+          ],
+          "features": []
+        },
+        {
+          "title": "Team",
+          "paragraphs": [
+            "Aurélien Claudin, Leny Arizzi and I shared entity and database management, business features and internationalisation. We coordinated delivery within the assignment deadline and prepared an oral presentation."
+          ],
+          "features": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "I built Symfony features including authentication, forms, Voter access rules and internationalisation. I wrote a custom forbidden-word Validator and configured an email verification bundle with Gmail delivery.",
+          "learnings": [
+            "Design and implement solutions",
+            "Write and implement functional specifications",
+            "Apply good design and programming practices"
+          ]
+        },
+        {
+          "id": "gerer",
+          "description": "I modelled Doctrine entities and relationships, created migrations and test fixtures, and wrote aggregate queries for totals, averages and category breakdowns.",
+          "learnings": [
+            "Design a database from requirements",
+            "Update and query a relational database"
+          ]
+        },
+        {
+          "id": "collaborer",
+          "description": "Our three-person team divided modules and coordinated delivery within the assignment’s time limit, including an oral presentation.",
+          "learnings": [
+            "Identify each team member’s role",
+            "Develop interpersonal skills for teamwork",
+            "Report on professional work"
+          ]
+        }
+      ]
+    },
+    "stage-nperf": {
+      "title": "nPerf hosting request form redesign",
+      "context": "Year 2 internship · nPerf, Villeurbanne (May-July 2026)",
+      "description": "A React/TypeScript server-hosting request form, with PHP validation and automatic osTicket integration.",
+      "sections": [
+        {
+          "title": "Context",
+          "paragraphs": [
+            "nPerf measures internet connection performance using a worldwide network of over 3,000 partner-hosted test servers. Its previous hosting request form did not collect enough technical information.",
+            "Missing details led to repeated exchanges between support and customers, slowing network setup and server deployment. Without clear confirmation, some applicants submitted many duplicate tickets."
+          ],
+          "features": []
+        },
+        {
+          "title": "My role",
+          "paragraphs": [
+            "The project was part of a wider effort to improve server support efficiency. A guided, multi-step flow was intended to collect complete information at the first contact and reduce abandonment.",
+            "I worked independently on the form within an eight-person web team, covering the user journey, React frontend, translations, dark mode and a PHP backend that validates data and sends requests to osTicket."
+          ],
+          "features": []
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Multi-step flow",
+              "description": "Four request types: creation, modification, problem report and other, with tailored steps."
+            },
+            {
+              "title": "Two validation layers",
+              "description": "React Hook Form validation for usability, backed by PHP server-side checks for data integrity."
+            },
+            {
+              "title": "Multilingual interface",
+              "description": "French, English and Arabic, including right-to-left layout for Arabic."
+            },
+            {
+              "title": "Dark mode",
+              "description": "Tailwind variables simplify theme maintenance."
+            },
+            {
+              "title": "osTicket integration",
+              "description": "Automatic ticket creation with base64-encoded attachments."
+            },
+            {
+              "title": "Redux state management",
+              "description": "A shared store makes form data available across components without prop drilling."
+            }
+          ]
+        },
+        {
+          "title": "First version and refactoring",
+          "paragraphs": [
+            "The first version covered the use cases quickly but passed data through many components, sometimes with fourteen props. My supervisor’s code reviews highlighted duplicated UI, unclear names, responsibility boundaries and accessibility issues.",
+            "I extracted shared components, centralised step routing through a mapping, moved state to Redux and reworked validation with React Hook Form. This reduced duplication and made the form easier for the team to maintain."
+          ],
+          "features": []
+        },
+        {
+          "title": "Working methods",
+          "paragraphs": [
+            "The web team used daily meetings, YouTrack tasks estimated in story points and code reviews before integration. Although I developed the form alone, regular team feedback helped me learn React, Redux and React Hook Form in a professional environment."
+          ],
+          "features": []
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "I built a React/TypeScript interface from the project specification, applying code review feedback to merge similar components, extract reusable elements and improve accessibility.",
+          "learnings": [
+            "Write and implement functional and non-functional specifications from requirements",
+            "Apply good design and programming practices",
+            "Apply accessibility and usability principles"
+          ]
+        },
+        {
+          "id": "optimiser",
+          "description": "I added server-side validation independently of client checks: rejecting malformed or private IP addresses, and checking attachment formats and sizes.",
+          "learnings": ["Understand how to secure data and code"]
+        },
+        {
+          "id": "administrer",
+          "description": "I built the PHP integration with the osTicket API, including request-specific messages and base64 attachment encoding.",
+          "learnings": [
+            "Design and develop communicating applications",
+            "Secure system services and data"
+          ]
+        },
+        {
+          "id": "conduire",
+          "description": "I tracked the work in YouTrack, breaking the project epic into tasks estimated in story points and translating requirements into features.",
+          "learnings": [
+            "Define and implement project tracking",
+            "Document customer and user requirements"
+          ]
+        },
+        {
+          "id": "collaborer",
+          "description": "I joined an eight-person team, attended daily meetings and used code review feedback to improve both my code and how I asked for help.",
+          "learnings": [
+            "Use interpersonal skills within a development team",
+            "Report on professional work"
+          ]
+        }
+      ]
+    },
+    "annuaire": {
+      "title": "Annuaire",
+      "context": "Development project · B.U.T. Computer Science, Year 1",
+      "description": "A C customer directory with a paginated console interface, CSV files, sorting and filtering.",
+      "sections": [
+        {
+          "title": "Context",
+          "paragraphs": [
+            "Ugo Lajoie and I built a customer directory in C for our first-semester development module. It needed to manage, display, sort, search and filter data while justifying the algorithmic choices."
+          ],
+          "features": []
+        },
+        {
+          "title": "Data structures",
+          "paragraphs": [
+            "Customer records are stored in an array of structures. A separate index array controls display, sorting and filtering, preserving the original data and making it possible to reset the view."
+          ],
+          "features": []
+        },
+        {
+          "title": "Modularity",
+          "paragraphs": [
+            "Dedicated functions build the menus, while shared functions such as user action prompts are reused across screens."
+          ],
+          "features": []
+        },
+        {
+          "title": "Algorithm choices",
+          "paragraphs": [
+            "Quick Sort orders the directory in average O(n log n) time. Linear search and cumulative filters run in O(n), supporting multiple combined selection criteria."
+          ],
+          "features": []
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "CSV import",
+              "description": "Load customer data from a CSV file at startup."
+            },
+            {
+              "title": "Customer management",
+              "description": "Add or remove customers and update the view."
+            },
+            {
+              "title": "Sorting",
+              "description": "Sort by different criteria using Quick Sort."
+            },
+            {
+              "title": "Combined filters",
+              "description": "Apply several filters together."
+            },
+            {
+              "title": "Console pagination",
+              "description": "Browse the directory page by page in a text interface."
+            },
+            {
+              "title": "Modular menus",
+              "description": "Navigate menus built from dedicated reusable functions."
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "I developed the directory in C, from CSV loading to adding, deleting and displaying customers in the console.",
+          "learnings": [
+            "Design and implement solutions",
+            "Apply good design and programming practices"
+          ]
+        },
+        {
+          "id": "optimiser",
+          "description": "I designed sorting and filtering operations to limit processing complexity: average O(n log n) Quick Sort and O(n) searches and filters.",
+          "learnings": ["Analyse a problem methodically", "Compare algorithms for common problems"]
+        },
+        {
+          "id": "gerer",
+          "description": "I organised in-memory data using customer structures and a separate index array, with CSV files for persistence.",
+          "learnings": ["Choose suitable complex data structures"]
+        },
+        {
+          "id": "conduire",
+          "description": "I analysed sorting, searching and filtering requirements and explained the algorithms chosen to meet them.",
+          "learnings": ["Understand customer and user needs"]
+        },
+        {
+          "id": "collaborer",
+          "description": "We worked as a pair on a modular design, separating functions and sharing development tasks.",
+          "learnings": ["Identify each team member’s role"]
+        }
+      ]
+    }
+  }
+}

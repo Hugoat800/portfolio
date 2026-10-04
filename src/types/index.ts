@@ -1,83 +1,37 @@
-// ── Compétences ───────────────────────────────────────────────────────────
-
 export type CompetenceId =
-  | 'realiser'
-  | 'optimiser'
-  | 'administrer'
-  | 'gerer'
-  | 'conduire'
-  | 'collaborer'
-
-export interface NiveauCompetence {
-  numero: number
-  titre: string
-}
-
-export interface Experience {
-  id: number
-  titre: string
-  entreprise: string
-  lieu: string
-  periode: string
-  description: string
-  technos: string[]
-  competences: CompetenceId[]
-  enCours?: boolean
-  lien?: string   // ← nouveau
-}
-
-export interface Competence {
-  id: CompetenceId
-  label: string
-  color: string
-  accentRgb: string
-  description: string
-  niveaux: NiveauCompetence[]
-  apprentissages: string[]
-}
-
-export type NiveauxAcquis = Record<CompetenceId, number>
-
-// ── Projets ───────────────────────────────────────────────────────────────
-
-export type TypeProjet = 'etudiant' | 'stage' | 'personnel'
-
-export interface LiensProjet {
-  git: string | null
-  demo: string | null
-}
-
-
-
-
-export interface Projet {
+  'realiser' | 'optimiser' | 'administrer' | 'gerer' | 'conduire' | 'collaborer'
+export type ProjectType = 'etudiant' | 'stage' | 'personnel'
+export interface Project {
   id: number
   slug: string
-  titre: string
-  type: TypeProjet
-  annee: string
-  contexte: string
-  description: string
-  technos: string[]
-  competences: CompetenceId[]
-  liens: LiensProjet
+  type: ProjectType
+  year: string
+  technologies: string[]
+  skills: CompetenceId[]
+  links: { source: string | null; website: string | null }
   image?: string
+  video?: string
 }
-
-
-export interface FiltreProjet {
-  value: 'tous' | TypeProjet
+export interface ContentSection {
+  title: string
+  paragraphs: string[]
+  features: { title: string; description: string }[]
+}
+export interface ProjectContent {
+  title: string
+  context: string
+  description: string
+  sections: ContentSection[]
+  evidence: { id: CompetenceId; description: string; learnings: string[] }[]
+}
+export interface SkillContent {
   label: string
+  description: string
+  levels: string[]
+  learnings: string[]
 }
-
-// ── Technologies ──────────────────────────────────────────────────────────
-
 export interface Techno {
   name: string
   categories: string[]
   logo: string
 }
-
-
-
-

@@ -1,118 +1,58 @@
-# ePortfolio — B.U.T. Informatique
+# Portfolio de Hugo Vitry
 
-Portfolio développé avec **React 18 + TypeScript + Tailwind CSS v3 + Vite**.
+React, TypeScript, Vite et i18next. Deux langues (français et anglais) et deux thèmes. Les routes des projets existants sont conservées.
 
-## Stack
+## Développement
 
-| Outil | Rôle |
-|---|---|
-| React 18 | UI |
-| TypeScript 5 (strict) | Typage statique |
-| Tailwind CSS v3 | Styles utilitaires |
-| Vite 5 | Bundler / dev server |
-| Google Fonts | Instrument Sans + Plus Jakarta Sans + JetBrains Mono |
-
-## Arborescence
-
-```
-src/
-├── main.tsx                  # Point d'entrée
-├── App.tsx                   # Racine + scroll spy
-├── index.css                 # Tailwind directives + composants réutilisables
-│
-├── types/
-│   └── index.ts              # Tous les types TypeScript partagés
-│
-├── data/                     # Données à personnaliser
-│   ├── competences.ts        # Référentiel B.U.T. + niveaux acquis
-│   ├── projets.ts            # Vos projets
-│   └── technos.ts            # Vos technologies
-│
-├── hooks/
-│   └── useScrollSpy.ts       # Détection de la section active
-│
-└── components/
-    ├── Navbar.tsx
-    ├── Hero.tsx
-    ├── APropos.tsx
-    ├── Competences.tsx
-    ├── ProjetModal.tsx
-    ├── Projets.tsx
-    ├── Technologies.tsx
-    ├── Contact.tsx
-    └── Footer.tsx
-```
-
-## Installation
-
-```bash
-npm install
+```sh
+npm ci
 npm run dev
-```
-
-Vérifier le typage seul :
-```bash
+npm run build
 npm run typecheck
+npm test
+npm run format
 ```
 
-## Personnalisation
+## Modifier le contenu
 
-### 1. Vos informations personnelles
+- `src/data/profile.ts` : coordonnées, photo, liens sociaux et CV.
+- `src/data/projects.ts` : catalogue des projets, slugs, années, technologies, compétences, médias et liens. Une adresse absente est `null`.
+- `src/data/skills.ts` : compétences et niveaux acquis.
+- `src/data/technos.ts` : technologies, logos et catégories.
+- `src/i18n/locales/fr.json` et `en.json` : tous les textes, contenus des projets et du parcours, libellés et métadonnées.
+- `src/index.css` : palette, composants et adaptation aux différentes tailles d’écran.
 
-Chercher `Prénom Nom` dans tout le projet et remplacer.  
-Chercher `prenom.nom@etudiant.univ.fr` pour l'email.
+Pour ajouter un projet, ajouter une entrée dans `projects.ts`, puis son contenu sous `projects.<slug>` dans **les deux fichiers de traduction**. La route `/projet/<slug>`, la carte, les filtres, les liens depuis les compétences et le projet suivant sont générés automatiquement.
 
-### 2. Vos projets — `src/data/projets.ts`
+Chaque contenu projet contient `title`, `context`, `description`, `sections` (titre, paragraphes, fonctionnalités) et `evidence` (compétence, justification, apprentissages). Les fichiers présents dans `public` sont référencés par leur chemin depuis la racine, par exemple `/projets/annuaire/annuaire.png`.
 
-Ajouter un projet en respectant l'interface `Projet` :
+## Traductions
 
-```ts
-{
-  id: 5,
-  titre: 'Mon projet',
-  type: 'etudiant',           // 'etudiant' | 'stage' | 'personnel'
-  annee: '2025',
-  contexte: 'SAE X.X — ...',
-  description: 'Résumé court affiché sur la carte',
-  descriptionLongue: 'Description complète dans la modale',
-  technos: ['React', 'Node.js'],
-  competences: ['realiser', 'gerer'],  // IDs définis dans types/index.ts
-  highlights: ['Point clé 1', 'Point clé 2'],
-  liens: { git: 'https://github.com/...', demo: null },
-}
+i18next et react-i18next gèrent les traductions, les pluriels et les interpolations. Le sélecteur FR/EN est accessible sur toutes les pages. Le choix est mémorisé ; à la première visite, la langue du navigateur détermine FR ou EN. La langue française sert de repli. Les noms propres, technologies et identifiants ne sont pas traduits. Le CV fourni reste en français et son lien l’indique.
+
+Pour une troisième langue : créer un fichier JSON avec la même structure, l’enregistrer dans `src/i18n/index.ts` et ajouter son bouton dans `LanguageSwitcher.tsx`.
+
+## Structure
+
+### Fond animé réutilisable
+
+`src/components/backgrounds/ContourBackground.tsx` et son fichier CSS forment un composant autonome, sans bibliothèque d'animation. Il dessine des courbes SVG qui ondulent lentement et reprend la couleur du thème.
+
+```tsx
+<section style={{ position: 'relative', isolation: 'isolate', overflow: 'hidden' }}>
+  <ContourBackground color="#b7a0ee" duration={18} intensity={0.25} />
+  {/* Contenu de la section */}
+</section>
 ```
 
-### 3. Niveaux de compétences — `src/data/competences.ts`
+`duration` règle la durée du mouvement en secondes, `intensity` l'opacité entre 0 et 1, et `color` accepte toute couleur CSS. L'animation se met en pause hors écran et respecte la préférence de réduction des animations. Le fond ne capte aucun clic et reste masqué aux lecteurs d'écran. Le fond global est fixé derrière toutes les pages avec la classe `contour-background--app` ; ses réglages se trouvent dans `App.tsx` (intensité actuelle : `0.05`).
 
-Modifier `NIVEAUX_ACQUIS` (1, 2 ou 3 selon votre avancement) :
+`App.tsx` porte la navigation, le thème et les routes. `ProjectPage.tsx` affiche chaque projet à partir du catalogue et de sa traduction. Les composants `Section`, `TagList`, `ProjectCard` et `ContactRow` partagent les éléments récurrents. Les compétences utilisent des panneaux natifs `<details>` accessibles au clavier.
 
-```ts
-export const NIVEAUX_ACQUIS: NiveauxAcquis = {
-  realiser:    3,
-  optimiser:   2,
-  // ...
-}
-```
+## Vérifications
 
-### 4. Technologies — `src/data/technos.ts`
+`npm test` vérifie la cohérence des traductions, des slugs, des compétences, des liens et des médias locaux. `npm run build` vérifie TypeScript et produit `dist/`.
 
-Ajouter / supprimer des entrées `{ name, category }`.
+## Hébergement
 
-### 5. Couleurs — `tailwind.config.ts`
-
-Les tokens de couleur sont dans `theme.extend.colors`.  
-Modifier les valeurs `violet.*` et `blue.*` pour changer la palette.
-
-## Déploiement sur GitHub Pages
-
-```bash
-npm install --save-dev gh-pages
-
-# Dans vite.config.ts, modifier :
-base: '/nom-du-repo/'
-
-# Dans package.json, ajouter :
-"deploy": "vite build && gh-pages -d dist"
-
-npm run deploy
-```
+L’hébergement doit renvoyer `index.html` pour les routes `/projet/*` afin que les liens directs fonctionnent avec BrowserRouter. La configuration actuelle utilise la racine du domaine (`base: '/'`).
