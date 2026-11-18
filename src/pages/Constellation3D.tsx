@@ -100,7 +100,7 @@ export default function Constellation3D() {
               <img className="space-cover" src={imageOf(current)} alt="" loading="lazy" />
             )}
             <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
-              ×
+              <CloseIcon />
             </button>
             <p className="space-kind" style={{ color: STAR_COLORS[current.kind] }}>
               {t(`space.legend.${current.kind}`)} {badgeOf(current)}
@@ -151,7 +151,7 @@ export default function Constellation3D() {
         ) : (
           <div className="space-card">
             <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
-              ×
+              <CloseIcon />
             </button>
             <h2>{t('space.title')}</h2>
             <p>{t('space.intro')}</p>
@@ -213,5 +213,19 @@ function Chips({
         ))}
       </ul>
     </div>
+  )
+}
+
+/** Drawn as SVG so the cross is perfectly centred, whatever the font. */
+function CloseIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+      <path
+        d="M1 1l10 10M11 1L1 11"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
   )
 }

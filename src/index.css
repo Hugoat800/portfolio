@@ -1177,10 +1177,12 @@ details[open] .expand-indicator {
   top: 10px;
   right: 10px;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 28px;
   height: 28px;
-  font-size: 20px;
-  line-height: 1;
+  padding: 0;
   color: #eeecf4;
   background: rgba(7, 6, 15, 0.7);
   border: 0;
