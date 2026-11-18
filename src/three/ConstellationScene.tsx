@@ -231,7 +231,7 @@ function Constellation({
         enablePan={false}
         enableDamping
         minDistance={5}
-        maxDistance={34}
+        maxDistance={42}
         autoRotate={!reducedMotion && !selectedId}
         autoRotateSpeed={0.07}
       />
@@ -243,7 +243,11 @@ function Constellation({
 export default function ConstellationScene(props: SceneProps) {
   return (
     <Canvas
-      camera={{ position: [0, 6, 22], fov: 55 }}
+      // Portrait screens need the camera further back to fit the whole ring.
+      camera={{
+        position: [0, 6, window.innerWidth < window.innerHeight ? 34 : 22],
+        fov: 55,
+      }}
       dpr={[1, 2]}
       onPointerMissed={() => props.onSelect(null)}
     >
