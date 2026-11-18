@@ -34,6 +34,16 @@ export const TECHNOS: Techno[] = [
     categories: ['Frontend', 'Frameworks'],
     logo: '/logo/Bootstrap_logo.svg.png',
   },
+  {
+    name: 'Three.js',
+    categories: ['Frontend', 'Frameworks'],
+    logo: '/logo/threejs.svg',
+  },
+  {
+    name: 'Swing',
+    categories: ['Frontend', 'Frameworks'],
+    logo: '/logo/java-coffee-cup-logo--v2.png',
+  },
 
   { name: 'Python', categories: ['Backend', 'Développement'], logo: '/logo/Python-logo.png' },
   {
@@ -52,6 +62,12 @@ export const TECHNOS: Techno[] = [
     categories: ['Backend', 'Développement', 'Frameworks'],
     logo: '/logo/symfony_logo_icon_144821.png',
   },
+  {
+    name: 'Doctrine ORM',
+    categories: ['Backend', 'Frameworks'],
+    logo: '/logo/doctrine.svg',
+  },
+  { name: 'C', categories: ['Backend', 'Développement'], logo: '/logo/c.svg' },
 
   { name: 'MySQL', categories: ['Base de données'], logo: '/logo/5968313.png' },
   {
@@ -62,11 +78,14 @@ export const TECHNOS: Techno[] = [
   { name: 'PL/SQL', categories: ['Base de données'], logo: '/logo/plsql.svg' },
   { name: 'MongoDB', categories: ['Base de données'], logo: '/logo/images.png' },
   { name: 'PowerBI', categories: ['Base de données'], logo: '/logo/New_Power_BI_Logo.svg.png' },
+  { name: 'Firebase', categories: ['Base de données'], logo: '/logo/firebase.svg' },
 
   { name: 'Docker', categories: ['DevOps'], logo: '/logo/Docker-svgrepo-com.svg.png' },
 
   { name: 'Git', categories: ['Outils'], logo: '/logo/Git_icon.svg.png' },
   { name: 'Figma', categories: ['Outils'], logo: '/logo/Figma.svg.png' },
+  { name: 'Android Studio', categories: ['Outils'], logo: '/logo/android-studio.svg' },
+  { name: 'Vite', categories: ['Outils'], logo: '/logo/vite.svg' },
 ]
 
 export const CATEGORIES_TECHNOS: string[] = [
