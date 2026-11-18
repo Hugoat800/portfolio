@@ -563,6 +563,84 @@
           "learnings": ["Identifier les rôles de chaque membre d'une équipe"]
         }
       ]
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "context": "Projet personnel",
+      "description": "Le site que tu es en train de lire, avec une version classique et une version 3D en constellation.",
+      "sections": [
+        {
+          "title": "Contexte",
+          "paragraphs": [
+            "J'ai fait ce portfolio pour présenter mes projets et mes compétences du B.U.T. pendant ma recherche d'alternance. Je l'ai refait plusieurs fois, la dernière version est passée en React et TypeScript pour que le contenu soit plus simple à maintenir."
+          ],
+          "features": []
+        },
+        {
+          "title": "Organisation du contenu",
+          "paragraphs": [
+            "Les projets, les compétences et les technos sont dans des fichiers de données séparés, et tous les textes sont dans des fichiers de traduction français et anglais. Ajouter un projet revient à remplir une fiche, la page du projet et sa place dans la constellation se génèrent toutes seules. Des tests vérifient que les deux langues ont le même contenu et que les images existent."
+          ],
+          "features": []
+        },
+        {
+          "title": "La version 3D",
+          "paragraphs": [
+            "Un ami avait fait un système solaire pour son portfolio, ça m'a donné envie d'essayer Three.js. J'ai choisi une constellation : chaque projet est relié aux technos et aux compétences qu'il utilise, ce qui montre les liens entre mes projets plutôt qu'une simple liste. La 3D est chargée à part, la version classique reste donc aussi rapide qu'avant."
+          ],
+          "features": []
+        },
+        {
+          "title": "Fonctionnalités principales",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Deux versions",
+              "description": "Un bouton 2D/3D dans le header pour passer de la version classique à la constellation."
+            },
+            {
+              "title": "Constellation interactive",
+              "description": "Rotation, zoom, survol pour voir les liens et clic pour ouvrir la fiche d'un projet, d'une compétence ou d'une techno."
+            },
+            {
+              "title": "Français et anglais",
+              "description": "Tout le site est traduit, la langue se change depuis le header."
+            },
+            {
+              "title": "Thème clair et sombre",
+              "description": "Le thème choisi est gardé d'une visite à l'autre."
+            },
+            {
+              "title": "Déploiement automatique",
+              "description": "Chaque push sur la branche principale lance le build et la mise en ligne avec GitHub Actions."
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "Développement du site complet en React et TypeScript, de la version classique à la scène 3D avec React Three Fiber, avec des tests sur le contenu et un déploiement automatique.",
+          "learnings": [
+            "Implémenter et élaborer des conceptions",
+            "Adopter de bonnes pratiques de conception et de programmation",
+            "Intégrer des solutions dans un environnement de production"
+          ]
+        },
+        {
+          "id": "optimiser",
+          "description": "Chargement de la 3D uniquement quand on ouvre cette version, animations coupées si l'utilisateur demande moins de mouvement, et placement des étoiles calculé à partir des liens entre projets.",
+          "learnings": [
+            "Analyser un problème avec méthode",
+            "Profiler, analyser et justifier le comportement d'un code"
+          ]
+        },
+        {
+          "id": "conduire",
+          "description": "Réflexion sur ce qu'un recruteur doit trouver vite (projets, compétences, contact) et choix de garder une version classique simple à côté de la version 3D.",
+          "learnings": ["Appréhender les besoins du client et de l'utilisateur"]
+        }
+      ]
     }
   },
   "skills": {

@@ -801,6 +801,84 @@
           "learnings": ["Identify each team member's role"]
         }
       ]
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "context": "Personal project",
+      "description": "The site you are reading, with a classic version and a 3D constellation version.",
+      "sections": [
+        {
+          "title": "Background",
+          "paragraphs": [
+            "I built this portfolio to show my projects and B.U.T. skills while looking for a work-study placement. I rebuilt it several times, and the latest version moved to React and TypeScript so the content is easier to maintain."
+          ],
+          "features": []
+        },
+        {
+          "title": "Content structure",
+          "paragraphs": [
+            "Projects, skills and technologies live in separate data files, and all the text is in French and English translation files. Adding a project means filling in one entry, and its page and its place in the constellation are generated from it. Tests check that both languages have the same content and that images exist."
+          ],
+          "features": []
+        },
+        {
+          "title": "The 3D version",
+          "paragraphs": [
+            "A friend's portfolio had a 3D solar system, which made me want to try Three.js. I went for a constellation: each project is linked to the technologies and skills it uses, which shows how my projects connect instead of just listing them. The 3D code is loaded separately, so the classic version stays as fast as before."
+          ],
+          "features": []
+        },
+        {
+          "title": "Main features",
+          "paragraphs": [],
+          "features": [
+            {
+              "title": "Two versions",
+              "description": "A 2D/3D button in the header switches between the classic site and the constellation."
+            },
+            {
+              "title": "Interactive constellation",
+              "description": "Rotate, zoom, hover to see links and click to open a project, skill or technology card."
+            },
+            {
+              "title": "French and English",
+              "description": "The whole site is translated, and the language can be changed from the header."
+            },
+            {
+              "title": "Light and dark theme",
+              "description": "The chosen theme is remembered between visits."
+            },
+            {
+              "title": "Automatic deployment",
+              "description": "Every push to the main branch builds and publishes the site with GitHub Actions."
+            }
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "realiser",
+          "description": "Built the whole site in React and TypeScript, from the classic version to the 3D scene with React Three Fiber, with content tests and automatic deployment.",
+          "learnings": [
+            "Design and implement solutions",
+            "Apply good design and programming practices",
+            "Integrate solutions into a production environment"
+          ]
+        },
+        {
+          "id": "optimiser",
+          "description": "The 3D code only loads when that version is opened, animations stop when the user asks for reduced motion, and star positions are computed from the links between projects.",
+          "learnings": [
+            "Analyse a problem methodically",
+            "Profile, analyse and explain code behaviour"
+          ]
+        },
+        {
+          "id": "conduire",
+          "description": "Thought about what a recruiter needs to find quickly (projects, skills, contact) and chose to keep a simple classic version next to the 3D one.",
+          "learnings": ["Understand customer and user needs"]
+        }
+      ]
     }
   },
   "space": {
