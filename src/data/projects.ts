@@ -83,4 +83,17 @@ export const PROJECTS: Project[] = [
     image: '/projets/annuaire/annuaire.png',
     video: '/projets/annuaire/annuaire.mp4',
   },
+  {
+    id: 10,
+    slug: 'portfolio',
+    type: 'personnel',
+    year: '2026',
+    technologies: ['React', 'TypeScript', 'TailwindCSS', 'Three.js', 'Vite', 'Git'],
+    skills: ['realiser', 'optimiser', 'conduire'],
+    links: {
+      source: 'https://github.com/Hugoat800/portfolio',
+      website: null,
+    },
+    image: '/projets/portfolio/portfolio.png',
+  },
 ]
