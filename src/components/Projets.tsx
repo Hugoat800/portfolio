@@ -16,7 +16,7 @@ export default function Projets() {
   return (
     <Section id="projets">
       <div className="filter-bar" role="group" aria-label={t('common.filterType')}>
-        {['tous', 'etudiant', 'stage'].map((value) => (
+        {['tous', 'etudiant', 'stage', 'personnel'].map((value) => (
           <button key={value} aria-pressed={type === value} onClick={() => setType(value)}>
             {t(`projectTypes.${value}`)}
           </button>
