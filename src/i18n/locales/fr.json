@@ -908,6 +908,8 @@
       "project": "Projets",
       "skill": "Compétences",
       "techno": "Technologies"
-    }
+    },
+    "button": "Portfolio 3D",
+    "classicButton": "Version classique"
   }
 }
