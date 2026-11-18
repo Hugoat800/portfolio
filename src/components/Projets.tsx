@@ -24,7 +24,7 @@ export default function Projets() {
       </div>
       {skill && (
         <button className="active-filter" onClick={() => setSkill(null)}>
-          {content.skill(skill).label} · {t('common.clearFilter')} ×
+          {content.skill(skill).label} ({t('common.clearFilter')}) ×
         </button>
       )}
       <p className="result-count" role="status">

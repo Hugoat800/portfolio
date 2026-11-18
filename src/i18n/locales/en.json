@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Hugo Vitry - Developer",
-    "description": "Hugo Vitry’s portfolio. Computer science student in Lyon, web and mobile projects, and professional experience."
+    "description": "Hugo Vitry's portfolio. Computer science student in Lyon, web and mobile projects, and professional experience."
   },
   "nav": {
     "accueil": "Home",
@@ -19,7 +19,7 @@
     },
     "competences": {
       "eyebrow": "French B.U.T. computer science curriculum",
-      "title": "What I’m learning"
+      "title": "What I'm learning"
     },
     "technos": {
       "eyebrow": "Across my projects",
@@ -34,8 +34,8 @@
       "title": "My background"
     },
     "contact": {
-      "eyebrow": "What’s next",
-      "title": "Let’s talk"
+      "eyebrow": "What's next",
+      "title": "Let's talk"
     }
   },
   "common": {
@@ -46,7 +46,7 @@
     "closeMenu": "Close menu",
     "lightTheme": "Switch to light theme",
     "darkTheme": "Switch to dark theme",
-    "level": "Level {{level}}",
+    "level": "Level {{level}}: {{label}}",
     "usedIn": "Used in",
     "filterSkill": "Filter by skill: {{skill}}",
     "readProject": "Explore the project",
@@ -80,27 +80,26 @@
     "personnel": "Personal project"
   },
   "hero": {
-    "location": "Lyon, France · Computer science student",
-    "role": "Web & application development.",
-    "description": "From a landscaping team’s schedule to a form at nPerf: I learn by building applications that address practical needs.",
+    "location": "Computer Science degree (B.U.T.) at IUT Lyon 1",
+    "role": "Web and application development",
+    "description": "I build web and mobile applications, at university and during my internship at nPerf.",
     "projects": "View projects",
     "contact": "Get in touch",
-    "availability": "Work-study placement or internship · 2026-2027",
-    "caption": "Behind the project",
+    "availability": "I'm looking for a work-study placement or a long internship for 2026/2027.",
     "scroll": "About me"
   },
   "about": {
     "paragraphs": [
-      "I’m in my third year of the B.U.T. computer science programme at IUT Lyon 1, specialising in application development. My projects have covered web, mobile and algorithms, often as part of a team.",
+      "I'm in my third year of the B.U.T. computer science programme at IUT Lyon 1, specialising in application development. My projects have covered web, mobile and algorithms, often as part of a team.",
       "At nPerf, I worked on a server-hosting request form using React, TypeScript and PHP. Code reviews taught me to revisit my choices: split components, improve state management and consider accessibility.",
-      "I’m looking for a work-study placement or a longer internship for 2026-2027 to keep learning within a development team."
+      "I'm looking for a work-study placement or a longer internship for 2026-2027 to keep learning within a development team."
     ],
     "interestsTitle": "Outside my projects",
     "interests": ["Video games", "Climbing", "Video editing", "Streaming"],
     "facts": [
       {
         "label": "Education",
-        "value": "B.U.T. Computer Science · Year 3"
+        "value": "B.U.T. Computer Science, year 3"
       },
       {
         "label": "Location",
@@ -117,25 +116,25 @@
     ]
   },
   "contact": {
-    "intro": "I’m looking for a work-study placement or a six-month internship for 2026-2027. To discuss an opportunity or ask a question, send me an email.",
+    "intro": "I'm looking for a work-study placement or a six-month internship for 2026-2027. To discuss an opportunity or ask a question, send me an email.",
     "email": "Email",
     "phone": "Phone",
     "socials": "Social profiles and résumé",
-    "resume": "Résumé · French"
+    "resume": "Résumé (French)"
   },
   "experience": {
     "entries": [
       {
         "date": "2026",
-        "title": "Web developer · Internship",
-        "organization": "nPerf · Villeurbanne",
+        "title": "Web developer intern",
+        "organization": "nPerf, Villeurbanne",
         "description": "Redesigned the server-hosting request form: React/TypeScript interface, PHP validation and automatic osTicket creation.",
         "project": "stage-nperf"
       },
       {
         "date": "Since 2024",
         "title": "B.U.T. Computer Science",
-        "organization": "IUT Lyon 1 · Application development",
+        "organization": "IUT Lyon 1, application development track",
         "description": "Studying application development, algorithms, data and project management. Team projects from requirements through to working software."
       }
     ]
@@ -152,7 +151,7 @@
   "skills": {
     "realiser": {
       "label": "Build",
-      "description": "Develop software to meet a client’s needs.",
+      "description": "Develop software to meet a client's needs.",
       "levels": [
         "Develop simple applications",
         "Turn requirements into a complete application",
@@ -233,7 +232,7 @@
       ],
       "learnings": [
         "Understand the digital ecosystem",
-        "Identify each team member’s role",
+        "Identify each team member's role",
         "Develop interpersonal skills for teamwork",
         "Follow a process to join a development team",
         "Report on professional work",
@@ -244,7 +243,7 @@
   "projects": {
     "team-jardin": {
       "title": "Team Jardin",
-      "context": "SAE S3.01 · B.U.T. Computer Science, Year 2",
+      "context": "SAE S3.01 - B.U.T. Computer Science, Year 2",
       "description": "A web application for a landscaping business: scheduling, invoicing and an employee portal.",
       "sections": [
         {
@@ -342,7 +341,7 @@
           "id": "collaborer",
           "description": "The four-person team shared responsibilities, using GitHub for version control, Discord for daily communication and Google Docs for the design report.",
           "learnings": [
-            "Identify each team member’s role",
+            "Identify each team member's role",
             "Develop interpersonal skills for teamwork",
             "Report on professional work"
           ]
@@ -351,7 +350,7 @@
     },
     "movietor": {
       "title": "MovieTor",
-      "context": "Mobile development coursework · B.U.T. Computer Science",
+      "context": "Mobile development coursework - B.U.T. Computer Science",
       "description": "An Android app to discover films, series, actors and their connections, with a watchlist and favourites.",
       "sections": [
         {
@@ -376,7 +375,7 @@
             },
             {
               "title": "Video clips",
-              "description": "Watch trailers and clips from a title’s detail page."
+              "description": "Watch trailers and clips from a title's detail page."
             },
             {
               "title": "Actor profiles",
@@ -395,7 +394,7 @@
         {
           "title": "Team",
           "paragraphs": [
-            "Leny Arizzi, Aurélien Claudin and I split the work by module: catalogue, detail screens and personal lists. Each of us contributed to the app’s screens and features."
+            "Leny Arizzi, Aurélien Claudin and I split the work by module: catalogue, detail screens and personal lists. Each of us contributed to the app's screens and features."
           ],
           "features": []
         }
@@ -420,7 +419,7 @@
           "id": "collaborer",
           "description": "We coordinated the work across three developers to keep independently built screens consistent.",
           "learnings": [
-            "Identify each team member’s role",
+            "Identify each team member's role",
             "Develop interpersonal skills for teamwork"
           ]
         }
@@ -428,8 +427,8 @@
     },
     "lumiere-mobilites": {
       "title": "Lumière Mobilités",
-      "context": "Development project · B.U.T. Computer Science, Semester 2",
-      "description": "A Java/Swing application comparing route optimisation algorithms for Lyon’s Festival of Lights.",
+      "context": "Development project - B.U.T. Computer Science, Semester 2",
+      "description": "A Java/Swing application comparing route optimisation algorithms for Lyon's Festival of Lights.",
       "sections": [
         {
           "title": "Context",
@@ -507,7 +506,7 @@
           "id": "collaborer",
           "description": "Our three-person team coordinated the algorithm layer, Euclidean/geographical data model and user interface.",
           "learnings": [
-            "Identify each team member’s role",
+            "Identify each team member's role",
             "Develop interpersonal skills for teamwork"
           ]
         }
@@ -515,7 +514,7 @@
     },
     "ultimatecourse": {
       "title": "UltimateCourse",
-      "context": "Graded Symfony assignment · B.U.T. Computer Science, Year 2",
+      "context": "Graded Symfony assignment - B.U.T. Computer Science, Year 2",
       "description": "A Symfony shopping-list application with a multilingual catalogue, spending statistics and administration tools.",
       "sections": [
         {
@@ -591,9 +590,9 @@
         },
         {
           "id": "collaborer",
-          "description": "Our three-person team divided modules and coordinated delivery within the assignment’s time limit, including an oral presentation.",
+          "description": "Our three-person team divided modules and coordinated delivery within the assignment's time limit, including an oral presentation.",
           "learnings": [
-            "Identify each team member’s role",
+            "Identify each team member's role",
             "Develop interpersonal skills for teamwork",
             "Report on professional work"
           ]
@@ -602,7 +601,7 @@
     },
     "stage-nperf": {
       "title": "nPerf hosting request form redesign",
-      "context": "Year 2 internship · nPerf, Villeurbanne (May-July 2026)",
+      "context": "Year 2 internship - nPerf, Villeurbanne (May-July 2026)",
       "description": "A React/TypeScript server-hosting request form, with PHP validation and automatic osTicket integration.",
       "sections": [
         {
@@ -654,7 +653,7 @@
         {
           "title": "First version and refactoring",
           "paragraphs": [
-            "The first version covered the use cases quickly but passed data through many components, sometimes with fourteen props. My supervisor’s code reviews highlighted duplicated UI, unclear names, responsibility boundaries and accessibility issues.",
+            "The first version covered the use cases quickly but passed data through many components, sometimes with fourteen props. My supervisor's code reviews highlighted duplicated UI, unclear names, responsibility boundaries and accessibility issues.",
             "I extracted shared components, centralised step routing through a mapping, moved state to Redux and reworked validation with React Hook Form. This reduced duplication and made the form easier for the team to maintain."
           ],
           "features": []
@@ -710,7 +709,7 @@
     },
     "annuaire": {
       "title": "Annuaire",
-      "context": "Development project · B.U.T. Computer Science, Year 1",
+      "context": "Development project - B.U.T. Computer Science, Year 1",
       "description": "A C customer directory with a paginated console interface, CSV files, sorting and filtering.",
       "sections": [
         {
@@ -799,9 +798,29 @@
         {
           "id": "collaborer",
           "description": "We worked as a pair on a modular design, separating functions and sharing development tasks.",
-          "learnings": ["Identify each team member’s role"]
+          "learnings": ["Identify each team member's role"]
         }
       ]
+    }
+  },
+  "space": {
+    "title": "Constellation",
+    "intro": "My projects, skills and the technologies I use, linked like stars.",
+    "hint": "Drag to rotate, scroll to zoom, click a star to explore it.",
+    "toClassic": "Switch to the classic version",
+    "to3d": "Switch to the 3D version",
+    "loading": "Loading the constellation...",
+    "noWebgl": "Your browser does not support 3D (WebGL).",
+    "close": "Close",
+    "technologies": "Technologies",
+    "skills": "Skills",
+    "linkedProjects": "Linked projects",
+    "noProject": "No project showcased with this technology yet.",
+    "projectsList": "Jump to a project",
+    "legend": {
+      "project": "Projects",
+      "skill": "Skills",
+      "techno": "Technologies"
     }
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, useLocation, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useScrollSpy } from './hooks/useScrollSpy'
@@ -15,6 +15,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ProjectPage from './pages/ProjectPage'
 import ContourBackground from './components/backgrounds/ContourBackground'
+const Constellation3D = lazy(() => import('./pages/Constellation3D'))
 function ScrollManager() {
   const { pathname, hash, key } = useLocation()
   useEffect(() => {
@@ -60,9 +61,12 @@ export default function App() {
   const { t } = useTranslation()
   const location = useLocation()
   const activeId = useScrollSpy(NAVIGATION)
+  const is3D = location.pathname === '/3d'
   return (
     <>
-      <ContourBackground className="contour-background--app" duration={18} intensity={0.05} />
+      {!is3D && (
+        <ContourBackground className="contour-background--app" duration={18} intensity={0.05} />
+      )}
       <a className="skip-link" href="#main">
         {t('common.skip')}
       </a>
@@ -76,10 +80,18 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projet/:slug" element={<ProjectPage />} />
+          <Route
+            path="/3d"
+            element={
+              <Suspense fallback={<p className="space-loading">{t('space.loading')}</p>}>
+                <Constellation3D />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      {!is3D && <Footer />}
     </>
   )
 }

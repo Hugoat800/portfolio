@@ -5,6 +5,7 @@ import { NAVIGATION, PROFILE } from '../data/profile'
 import type { Theme } from '../hooks/useTheme'
 import ThemeToggle from './ThemeToggle'
 import LanguageSwitcher from './LanguageSwitcher'
+import ViewSwitch from './ViewSwitch'
 export default function Navbar({
   activeId,
   theme,
@@ -36,9 +37,6 @@ export default function Navbar({
       <div className="header-inner container">
         <Link to="/#accueil" className="wordmark" aria-label={t('common.home')}>
           <span>{PROFILE.name}</span>
-          <span className="wordmark-dot" aria-hidden="true">
-            .
-          </span>
         </Link>
         <nav
           id="main-navigation"
@@ -57,6 +55,7 @@ export default function Navbar({
           ))}
         </nav>
         <div className="header-actions">
+          <ViewSwitch />
           <LanguageSwitcher />
           <ThemeToggle theme={theme} onToggle={onThemeToggle} />
           <button

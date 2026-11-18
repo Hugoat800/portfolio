@@ -24,7 +24,7 @@ export default function ProjectPage() {
       </Link>
       <header className="project-header">
         <p className="project-meta">
-          {t(`projectTypes.${project.type}`)} · {project.year}
+          {t(`projectTypes.${project.type}`)}, {project.year}
         </p>
         <h1>{text.title}</h1>
         <p className="project-context">{text.context}</p>

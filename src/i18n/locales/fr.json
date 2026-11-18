@@ -683,7 +683,7 @@
     },
     "competences": {
       "eyebrow": "Référentiel B.U.T. Informatique",
-      "title": "Ce que j’apprends"
+      "title": "Ce que j'apprends"
     },
     "technos": {
       "eyebrow": "Au fil des projets",
@@ -703,14 +703,14 @@
     }
   },
   "common": {
-    "home": "Retour à l’accueil",
+    "home": "Retour à l'accueil",
     "navigation": "Navigation principale",
     "language": "Langue du site",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
     "lightTheme": "Passer au thème clair",
     "darkTheme": "Passer au thème sombre",
-    "level": "Niveau {{level}}",
+    "level": "Niveau {{level}} : {{label}}",
     "usedIn": "Mobilisée dans",
     "filterSkill": "Filtrer par compétence : {{skill}}",
     "readProject": "Découvrir le projet",
@@ -727,7 +727,7 @@
     "error": "La copie a échoué. Tu peux sélectionner le texte ou utiliser le lien.",
     "backTop": "Retour en haut",
     "skip": "Aller au contenu",
-    "notFound": "Cette page n’existe pas.",
+    "notFound": "Cette page n'existe pas.",
     "backProjects": "Retour aux projets",
     "source": "Code source",
     "website": "Site du projet",
@@ -744,27 +744,26 @@
     "personnel": "Personnel"
   },
   "hero": {
-    "location": "Lyon, France · B.U.T. Informatique",
-    "role": "Développement web & applications.",
-    "description": "Du planning d’une équipe de paysagistes à un formulaire chez nPerf : j’apprends en construisant des applications qui répondent à des besoins concrets.",
+    "location": "B.U.T. Informatique à l'IUT Lyon 1",
+    "role": "Développement web et applications",
+    "description": "Je développe des applications web et mobiles, en cours et pendant mon stage chez nPerf.",
     "projects": "Voir les projets",
     "contact": "Me contacter",
-    "availability": "Alternance ou stage · 2026-2027",
-    "caption": "Behind the project",
+    "availability": "Je suis en recherche d'une alternance ou d'un stage long pour 2026/2027.",
     "scroll": "À propos de moi"
   },
   "about": {
     "paragraphs": [
-      "Je suis en troisième année de B.U.T. Informatique à l’IUT Lyon 1, dans le parcours Réalisation d’applications. Mes projets m’ont amené à travailler sur le web, le mobile et les algorithmes, souvent en équipe.",
-      "Chez nPerf, j’ai travaillé sur un formulaire d’hébergement de serveurs en React, TypeScript et PHP. Les revues de code m’ont appris à revoir mes choix : découper les composants, mieux gérer l’état et prendre en compte l’accessibilité.",
-      "Je cherche une alternance ou un stage long pour 2026-2027, pour poursuivre cet apprentissage au sein d’une équipe de développement."
+      "Je suis en troisième année de B.U.T. Informatique à l'IUT Lyon 1, dans le parcours Réalisation d'applications. Mes projets m'ont amené à travailler sur le web, le mobile et les algorithmes, souvent en équipe.",
+      "Chez nPerf, j'ai travaillé sur un formulaire d'hébergement de serveurs en React, TypeScript et PHP. Les revues de code m'ont appris à revoir mes choix : découper les composants, mieux gérer l'état et prendre en compte l'accessibilité.",
+      "Je cherche une alternance ou un stage long pour 2026-2027, pour poursuivre cet apprentissage au sein d'une équipe de développement."
     ],
     "interestsTitle": "En dehors des projets",
     "interests": ["Jeux vidéo", "Escalade", "Montage vidéo", "Streaming"],
     "facts": [
       {
         "label": "Formation",
-        "value": "B.U.T. Informatique · 3e année"
+        "value": "B.U.T. Informatique, 3e année"
       },
       {
         "label": "Localisation",
@@ -781,26 +780,26 @@
     ]
   },
   "contact": {
-    "intro": "Je recherche une alternance ou un stage de six mois pour 2026-2027. Pour échanger sur une mission ou me poser une question, le plus simple est de m’écrire.",
+    "intro": "Je recherche une alternance ou un stage de six mois pour 2026-2027. Pour échanger sur une mission ou me poser une question, le plus simple est de m'écrire.",
     "email": "Adresse e-mail",
     "phone": "Téléphone",
-    "socials": "Réseaux et curriculum vitæ",
-    "resume": "CV · français"
+    "socials": "Réseaux et CV",
+    "resume": "CV (français)"
   },
   "experience": {
     "entries": [
       {
         "date": "2026",
-        "title": "Développeur web · Stage",
-        "organization": "nPerf · Villeurbanne",
-        "description": "Refonte du formulaire de demande d’hébergement de serveurs : interface React/TypeScript, validation PHP et création automatisée de tickets osTicket.",
+        "title": "Développeur web en stage",
+        "organization": "nPerf, Villeurbanne",
+        "description": "Refonte du formulaire de demande d'hébergement de serveurs : interface React/TypeScript, validation PHP et création automatisée de tickets osTicket.",
         "project": "stage-nperf"
       },
       {
         "date": "Depuis 2024",
         "title": "B.U.T. Informatique",
-        "organization": "IUT Lyon 1 · Parcours Réalisation d’applications",
-        "description": "Formation en développement d’applications, algorithmique, données et gestion de projet. Projets réalisés en équipe, du cahier des charges à l’application."
+        "organization": "IUT Lyon 1, parcours Réalisation d'applications",
+        "description": "Formation en développement d'applications, algorithmique, données et gestion de projet. Projets réalisés en équipe, du cahier des charges à l'application."
       }
     ]
   },
@@ -812,5 +811,25 @@
     "Base de données": "Données",
     "DevOps": "DevOps",
     "Outils": "Outils"
+  },
+  "space": {
+    "title": "Constellation",
+    "intro": "Mes projets, mes compétences et les technologies que j'utilise, reliés comme des étoiles.",
+    "hint": "Glisse pour tourner, molette pour zoomer, clique sur une étoile pour l'explorer.",
+    "toClassic": "Passer à la version classique",
+    "to3d": "Passer à la version 3D",
+    "loading": "Chargement de la constellation...",
+    "noWebgl": "Ton navigateur ne prend pas en charge la 3D (WebGL).",
+    "close": "Fermer",
+    "technologies": "Technologies",
+    "skills": "Compétences",
+    "linkedProjects": "Projets liés",
+    "noProject": "Pas encore de projet présenté avec cette technologie.",
+    "projectsList": "Aller à un projet",
+    "legend": {
+      "project": "Projets",
+      "skill": "Compétences",
+      "techno": "Technologies"
+    }
   }
 }

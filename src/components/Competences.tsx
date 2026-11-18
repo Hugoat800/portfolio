@@ -23,7 +23,7 @@ export default function Competences() {
               </summary>
               <p>{skill.description}</p>
               <p className="skill-level">
-                {t('common.level', { level })} · {skill.levels[level - 1]}
+                {t('common.level', { level, label: skill.levels[level - 1] })}
               </p>
               <ul className="learning-list">
                 {skill.learnings.map((item) => (
