@@ -1123,6 +1123,27 @@ details[open] .expand-indicator {
   z-index: 20;
   color: #eeecf4;
 }
+.space-panel[hidden] {
+  display: none;
+}
+.space-open {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 20;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #eeecf4;
+  background: rgba(13, 12, 23, 0.78);
+  border: 1px solid rgba(183, 160, 238, 0.35);
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+}
+.space-open:hover,
+.space-open:focus-visible {
+  border-color: #c4b0ff;
+}
 .space-card {
   position: relative;
   padding: 20px 22px;
@@ -1296,6 +1317,10 @@ details[open] .expand-indicator {
   text-shadow: none;
 }
 @media (max-width: 640px) {
+  .space-open {
+    left: 16px;
+    bottom: 16px;
+  }
   .space-panel {
     left: 16px;
     bottom: 16px;

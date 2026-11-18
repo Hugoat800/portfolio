@@ -21,6 +21,16 @@ export default function Constellation3D() {
   const graph = useMemo(buildConstellation, [])
   const [hovered, setHovered] = useState<string | null>(null)
   const [selected, setSelected] = useState<string | null>(null)
+  // On phones the panel would hide most of the sky, so it starts closed.
+  const [panelOpen, setPanelOpen] = useState(() => !window.matchMedia('(max-width: 640px)').matches)
+  const select = (id: string | null) => {
+    setSelected(id)
+    if (id) setPanelOpen(true)
+  }
+  const closePanel = () => {
+    setSelected(null)
+    setPanelOpen(false)
+  }
   const webgl = useMemo(hasWebGL, [])
   const reducedMotion = useMemo(
     () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -70,20 +80,26 @@ export default function Constellation3D() {
         selectedId={selected}
         reducedMotion={reducedMotion}
         onHover={setHovered}
-        onSelect={setSelected}
+        onSelect={select}
       />
 
-      <aside className="space-panel" aria-live="polite">
+      {!panelOpen && (
+        <button
+          className="space-open"
+          onClick={() => setPanelOpen(true)}
+          aria-expanded={false}
+          aria-controls="space-panel"
+        >
+          {t('space.open')}
+        </button>
+      )}
+      <aside id="space-panel" className="space-panel" aria-live="polite" hidden={!panelOpen}>
         {current ? (
           <div className="space-card">
             {imageOf(current) && (
               <img className="space-cover" src={imageOf(current)} alt="" loading="lazy" />
             )}
-            <button
-              className="space-close"
-              onClick={() => setSelected(null)}
-              aria-label={t('space.close')}
-            >
+            <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
               ×
             </button>
             <p className="space-kind" style={{ color: STAR_COLORS[current.kind] }}>
@@ -102,7 +118,7 @@ export default function Constellation3D() {
                   nameOf={nameOf}
                   badgeOf={badgeOf}
                   logoOf={logoOf}
-                  onSelect={setSelected}
+                  onSelect={select}
                 />
                 <Chips
                   title={t('space.skills')}
@@ -110,7 +126,7 @@ export default function Constellation3D() {
                   nameOf={nameOf}
                   badgeOf={badgeOf}
                   logoOf={logoOf}
-                  onSelect={setSelected}
+                  onSelect={select}
                 />
                 <Link className="space-cta" to={`/projet/${current.key}`}>
                   {t('common.readProject')}
@@ -126,7 +142,7 @@ export default function Constellation3D() {
                   nameOf={nameOf}
                   badgeOf={badgeOf}
                   logoOf={logoOf}
-                  onSelect={setSelected}
+                  onSelect={select}
                 />
               ) : (
                 <p className="space-muted">{t('space.noProject')}</p>
@@ -134,6 +150,9 @@ export default function Constellation3D() {
           </div>
         ) : (
           <div className="space-card">
+            <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
+              ×
+            </button>
             <h2>{t('space.title')}</h2>
             <p>{t('space.intro')}</p>
             <p className="space-muted">{t('space.hint')}</p>
@@ -151,7 +170,7 @@ export default function Constellation3D() {
               nameOf={nameOf}
               badgeOf={badgeOf}
               logoOf={logoOf}
-              onSelect={setSelected}
+              onSelect={select}
             />
           </div>
         )}

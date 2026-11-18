@@ -901,6 +901,7 @@
       "techno": "Technologies"
     },
     "button": "3D portfolio",
-    "classicButton": "Classic version"
+    "classicButton": "Classic version",
+    "open": "Info"
   }
 }
