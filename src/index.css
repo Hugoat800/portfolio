@@ -1336,6 +1336,34 @@ details[open] .expand-indicator {
 .star-label--dim {
   opacity: 0.25;
 }
+/* Warp flash that covers the screen while flying into a project. */
+.space-warp {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: radial-gradient(circle, #ffffff 0%, #d9ccff 25%, #7250bf 60%, #07060f 100%);
+  animation: space-warp 1.1s ease-in forwards;
+}
+@keyframes space-warp {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .space-warp {
+    animation: none;
+    opacity: 0;
+  }
+}
 .star-badge {
   padding: 1px 5px;
   font-size: 10px;

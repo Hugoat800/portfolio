@@ -1,12 +1,12 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { PROJECTS } from '../data/projects'
 import { SKILLS } from '../data/skills'
 import { TECHNOS } from '../data/technos'
 import { buildConstellation, type StarNode } from '../three/constellationData'
 import ConstellationScene, { STAR_COLORS } from '../three/ConstellationScene'
-import { playStarSound } from '../three/sound'
+import { playStarSound, playTravelSound } from '../three/sound'
 import { useSpaceMusic } from '../three/useSpaceMusic'
 
 function hasWebGL() {
@@ -26,7 +26,25 @@ export default function Constellation3D() {
   // On phones the panel would hide most of the sky, so it starts closed.
   const [panelOpen, setPanelOpen] = useState(() => !window.matchMedia('(max-width: 640px)').matches)
   const music = useSpaceMusic()
+  const navigate = useNavigate()
+  const [travelId, setTravelId] = useState<string | null>(null)
+  const travelTimer = useRef<number>()
+  useEffect(() => () => window.clearTimeout(travelTimer.current), [])
+  /** Fly into a project, then open its page once the warp has filled the screen. */
+  const travel = (node: StarNode) => {
+    if (travelId || node.kind !== 'project') return
+    setTravelId(node.id)
+    if (music.soundOnRef.current) playTravelSound()
+    travelTimer.current = window.setTimeout(
+      () => navigate(`/projet/${node.key}`),
+      reducedMotion ? 0 : 1100,
+    )
+  }
   const select = (id: string | null) => {
+    if (travelId) return
+    const clicked = id ? graph.byId.get(id) : undefined
+    // Second click on the selected project: go to its page.
+    if (clicked && id === selected && clicked.kind === 'project') return travel(clicked)
     setSelected(id)
     if (!id) return
     setPanelOpen(true)
@@ -99,12 +117,15 @@ export default function Constellation3D() {
         </button>
       </div>
       <h1 className="sr-only">{t('space.title')}</h1>
+      {travelId && <div className="space-warp" aria-hidden="true" />}
       <ConstellationScene
         graph={graph}
         labels={labels}
         badges={badges}
         focusId={hovered ?? selected}
+        hoveredId={hovered}
         selectedId={selected}
+        travelId={travelId}
         reducedMotion={reducedMotion}
         onHover={setHovered}
         onSelect={select}
@@ -120,7 +141,12 @@ export default function Constellation3D() {
           {t('space.open')}
         </button>
       )}
-      <aside id="space-panel" className="space-panel" aria-live="polite" hidden={!panelOpen}>
+      <aside
+        id="space-panel"
+        className="space-panel"
+        aria-live="polite"
+        hidden={!panelOpen || !!travelId}
+      >
         {current ? (
           <div className="space-card">
             {imageOf(current) && (
@@ -155,7 +181,14 @@ export default function Constellation3D() {
                   logoOf={logoOf}
                   onSelect={select}
                 />
-                <Link className="space-cta" to={`/projet/${current.key}`}>
+                <Link
+                  className="space-cta"
+                  to={`/projet/${current.key}`}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    travel(current)
+                  }}
+                >
                   {t('common.readProject')}
                 </Link>
               </>
