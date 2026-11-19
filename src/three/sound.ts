@@ -26,10 +26,21 @@ export const CLICK_SOUNDS: Record<StarKind, string> = {
 }
 export const CLICK_VOLUME = 0.14
 
-export function playStarSound(kind: StarKind) {
-  const sound = new Audio(CLICK_SOUNDS[kind])
+/** Sound of the "warp" toward a project page, on the second click. */
+export const TRAVEL_SOUND = '/audio/voyage.mp3'
+
+function playFile(src: string) {
+  const sound = new Audio(src)
   sound.volume = CLICK_VOLUME
   sound.play().catch(() => {
     /* Missing file or blocked by the browser: stay silent. */
   })
+}
+
+export function playStarSound(kind: StarKind) {
+  playFile(CLICK_SOUNDS[kind])
+}
+
+export function playTravelSound() {
+  playFile(TRAVEL_SOUND)
 }
