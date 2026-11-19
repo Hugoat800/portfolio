@@ -1,1 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#14121f"/><text x="12" y="45" font-family="Arial,sans-serif" font-size="40" font-weight="600" fill="#eeecf4">h</text><circle cx="48" cy="43" r="4" fill="#b7a0ee"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0d0c17"/>
+  <g stroke="#b7a0ee" stroke-width="2.4" stroke-linecap="round" opacity="0.7">
+    <line x1="22" y1="40" x2="43" y2="20"/>
+    <line x1="22" y1="40" x2="46" y2="46"/>
+    <line x1="43" y1="20" x2="46" y2="46"/>
+  </g>
+  <circle cx="22" cy="40" r="13" fill="url(#glow)" opacity="0.55"/>
+  <circle cx="22" cy="40" r="7.5" fill="#c4b0ff"/>
+  <path d="M43 13.5 L49.5 20 L43 26.5 L36.5 20 Z" fill="#f5cf86"/>
+  <circle cx="46" cy="46" r="5" fill="#8fd6ff"/>
+</svg>
