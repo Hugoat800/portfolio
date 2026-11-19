@@ -6,8 +6,14 @@ import { SKILLS } from '../data/skills'
 import { TECHNOS } from '../data/technos'
 import { buildConstellation, type StarNode } from '../three/constellationData'
 import ConstellationScene, { STAR_COLORS } from '../three/ConstellationScene'
-import { MUSIC_MAX_VOLUME, playStarSound, playTravelSound } from '../three/sound'
+import {
+  MUSIC_MAX_VOLUME,
+  playBlackHoleSound,
+  playStarSound,
+  playTravelSound,
+} from '../three/sound'
 import { useSpaceMusic } from '../three/useSpaceMusic'
+import { BLACK_HOLE_ID } from '../three/BlackHole'
 
 function hasWebGL() {
   try {
@@ -28,6 +34,27 @@ export default function Constellation3D() {
   const music = useSpaceMusic()
   const navigate = useNavigate()
   const [travelId, setTravelId] = useState<string | null>(null)
+  const [blackHole, setBlackHole] = useState(false)
+  const [toast, setToast] = useState(false)
+  const findBlackHole = () => {
+    if (blackHole) return
+    setBlackHole(true)
+    setToast(true)
+    window.setTimeout(() => setToast(false), 5000)
+    if (music.soundOnRef.current) playBlackHoleSound()
+  }
+  // Second way in: type the secret word anywhere on the page.
+  useEffect(() => {
+    const secret = 'trounoir'
+    let typed = ''
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key.length !== 1) return
+      typed = (typed + e.key.toLowerCase()).slice(-secret.length)
+      if (typed === secret) findBlackHole()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
   const travelTimer = useRef<number>()
   useEffect(() => () => window.clearTimeout(travelTimer.current), [])
   /** Fly into a project, then open its page once the warp has filled the screen. */
@@ -49,7 +76,9 @@ export default function Constellation3D() {
     if (!id) return
     setPanelOpen(true)
     const node = graph.byId.get(id)
-    if (node && music.soundOnRef.current) playStarSound(node.kind)
+    if (!music.soundOnRef.current) return
+    if (node) playStarSound(node.kind)
+    else if (id === BLACK_HOLE_ID) playBlackHoleSound()
   }
   const closePanel = () => {
     setSelected(null)
@@ -134,6 +163,11 @@ export default function Constellation3D() {
       </div>
       <h1 className="sr-only">{t('space.title')}</h1>
       {travelId && <div className="space-warp" aria-hidden="true" />}
+      {toast && (
+        <p className="space-toast" role="status">
+          {t('space.blackHole')}
+        </p>
+      )}
       <ConstellationScene
         graph={graph}
         labels={labels}
@@ -142,6 +176,8 @@ export default function Constellation3D() {
         hoveredId={hovered}
         selectedId={selected}
         travelId={travelId}
+        blackHole={blackHole}
+        onSecretFound={findBlackHole}
         reducedMotion={reducedMotion}
         onHover={setHovered}
         onSelect={select}
@@ -163,7 +199,18 @@ export default function Constellation3D() {
         aria-live="polite"
         hidden={!panelOpen || !!travelId}
       >
-        {current ? (
+        {selected === BLACK_HOLE_ID ? (
+          <div className="space-card">
+            <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
+              <CloseIcon />
+            </button>
+            <p className="space-kind" style={{ color: '#ffb36b' }}>
+              {t('space.blackHoleCard.kind')}
+            </p>
+            <h2>{t('space.blackHoleCard.title')}</h2>
+            <p>{t('space.blackHoleCard.text')}</p>
+          </div>
+        ) : current ? (
           <div className="space-card">
             {imageOf(current) && (
               <img className="space-cover" src={imageOf(current)} alt="" loading="lazy" />

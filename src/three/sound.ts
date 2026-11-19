@@ -40,6 +40,13 @@ function playFile(src: string) {
   })
 }
 
+/** Easter egg sound when the black hole appears. Optional: silent if the file is missing. */
+export const BLACK_HOLE_SOUND = '/audio/trou-noir.mp3'
+
+export function playBlackHoleSound() {
+  playFile(BLACK_HOLE_SOUND)
+}
+
 export function playStarSound(kind: StarKind) {
   playFile(CLICK_SOUNDS[kind])
 }

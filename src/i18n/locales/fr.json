@@ -916,6 +916,12 @@
     "soundOff": "Couper le son",
     "nextTrack": "Musique suivante",
     "nowPlaying": "En cours : {{title}}. Clique pour passer à la suivante",
-    "volume": "Volume de la musique"
+    "volume": "Volume de la musique",
+    "blackHole": "Bravo, tu as trouvé le trou noir !",
+    "blackHoleCard": {
+      "kind": "Easter egg",
+      "title": "Trou noir",
+      "text": "Tu as trouvé le secret de la constellation. Même la lumière ne peut pas s'en échapper, alors j'y range les bugs que je n'ai pas encore corrigés."
+    }
   }
 }

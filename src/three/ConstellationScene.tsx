@@ -4,6 +4,7 @@ import { Html, Line, OrbitControls, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import type { ConstellationGraph, StarKind, StarNode } from './constellationData'
+import { BLACK_HOLE_ID, BLACK_HOLE_POSITION, BlackHole, HiddenStar } from './BlackHole'
 
 export const STAR_COLORS: Record<StarKind, string> = {
   project: '#c4b0ff',
@@ -42,6 +43,9 @@ interface SceneProps {
   selectedId: string | null
   /** Project the camera is flying into, before opening its page. */
   travelId: string | null
+  /** Easter egg: the black hole has been found and is now visible. */
+  blackHole: boolean
+  onSecretFound: () => void
   reducedMotion: boolean
   onHover: (id: string | null) => void
   onSelect: (id: string | null) => void
@@ -166,13 +170,27 @@ function CameraRig({
   controls,
   target,
   travel,
+  approach,
 }: {
   controls: React.RefObject<OrbitControlsImpl>
   target: THREE.Vector3
   travel: StarNode | undefined
+  /** True while the black hole is selected: it is far away, so fly closer for a few seconds. */
+  approach: boolean
 }) {
   const camera = useThree((state) => state.camera) as THREE.PerspectiveCamera
-  useFrame((_, delta) => {
+  const approachStart = useRef<number | null>(null)
+  useFrame(({ clock }, delta) => {
+    if (approach) approachStart.current ??= clock.elapsedTime
+    else approachStart.current = null
+    const approaching =
+      approachStart.current !== null && clock.elapsedTime - approachStart.current < 4
+    if (approaching && controls.current) {
+      // Shorten the camera-to-target distance smoothly, down to 17 units.
+      const offset = camera.position.clone().sub(controls.current.target)
+      const length = THREE.MathUtils.damp(offset.length(), 17, 1.5, delta)
+      camera.position.copy(controls.current.target).add(offset.setLength(length))
+    }
     if (travel) {
       // Warp: dive straight into the planet while the field of view stretches.
       const goal = new THREE.Vector3(...travel.position)
@@ -200,6 +218,8 @@ function Constellation({
   hoveredId,
   selectedId,
   travelId,
+  blackHole,
+  onSecretFound,
   reducedMotion,
   onHover,
   onSelect,
@@ -209,8 +229,15 @@ function Constellation({
   const focus = focusId ? graph.byId.get(focusId) : undefined
   const selected = selectedId ? graph.byId.get(selectedId) : undefined
   const target = useMemo(
-    () => new THREE.Vector3(...(selected ? selected.position : [0, 0, 0])),
-    [selected],
+    () =>
+      new THREE.Vector3(
+        ...(selected
+          ? selected.position
+          : selectedId === BLACK_HOLE_ID
+            ? BLACK_HOLE_POSITION
+            : [0, 0, 0]),
+      ),
+    [selected, selectedId],
   )
 
   const stateOf = (node: StarNode) => {
@@ -258,6 +285,12 @@ function Constellation({
         />
       ))}
 
+      {blackHole ? (
+        <BlackHole reducedMotion={reducedMotion} onSelect={onSelect} />
+      ) : (
+        <HiddenStar glow={glow} onFound={onSecretFound} />
+      )}
+
       <OrbitControls
         ref={controls}
         enabled={!travelId}
@@ -272,6 +305,7 @@ function Constellation({
         controls={controls}
         target={target}
         travel={travelId ? graph.byId.get(travelId) : undefined}
+        approach={selectedId === BLACK_HOLE_ID}
       />
     </>
   )

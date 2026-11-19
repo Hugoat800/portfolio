@@ -907,6 +907,12 @@
     "soundOff": "Mute sound",
     "nextTrack": "Next track",
     "nowPlaying": "Now playing: {{title}}. Click for the next one",
-    "volume": "Music volume"
+    "volume": "Music volume",
+    "blackHole": "Well done, you found the black hole!",
+    "blackHoleCard": {
+      "kind": "Easter egg",
+      "title": "Black hole",
+      "text": "You found the constellation's secret. Not even light can escape it, so that's where I keep the bugs I haven't fixed yet."
+    }
   }
 }
