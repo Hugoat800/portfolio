@@ -312,6 +312,7 @@ export default function Constellation3D() {
               logoOf={logoOf}
               onSelect={select}
             />
+            <p className="space-credits">{t('space.credits')}</p>
           </div>
         )}
       </aside>

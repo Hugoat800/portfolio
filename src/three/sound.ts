@@ -12,9 +12,10 @@ export interface Track {
  * them here; it starts on a random track and plays them in order.
  */
 export const PLAYLIST: Track[] = [
-  { src: '/audio/musique-1.mp3', title: 'Musique 1' },
-  { src: '/audio/musique-2.mp3', title: 'Musique 2' },
-  { src: '/audio/musique-3.mp3', title: 'Musique 3' },
+  // Besiege OST, © Spiderling Games: credited in the 3D panel (space.credits).
+  { src: '/audio/musique-1.mp3', title: 'Besiege - Main Title' },
+  { src: '/audio/musique-2.mp3', title: 'Besiege - Tolbrynd' },
+  { src: '/audio/musique-3.mp3', title: 'Besiege - Valfross' },
 ]
 /** Default music volume, from 0 to 1. */
 export const MUSIC_VOLUME = 0.07

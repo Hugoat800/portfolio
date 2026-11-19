@@ -1269,6 +1269,14 @@ details[open] .expand-indicator {
   border-radius: 50%;
   box-shadow: 0 0 8px currentColor;
 }
+.space-card .space-credits {
+  margin: 4px 0 0;
+  padding-top: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #938da4;
+  border-top: 1px solid rgba(183, 160, 238, 0.15);
+}
 .space-chips h3 {
   margin: 4px 0 8px;
   font-size: 12px;
