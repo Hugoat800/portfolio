@@ -902,6 +902,10 @@
     },
     "button": "3D portfolio",
     "classicButton": "Classic version",
-    "open": "Info"
+    "open": "Info",
+    "soundOn": "Turn sound on",
+    "soundOff": "Mute sound",
+    "nextTrack": "Next track",
+    "nowPlaying": "Now playing: {{title}}. Click for the next one"
   }
 }

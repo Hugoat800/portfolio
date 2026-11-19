@@ -1126,6 +1126,34 @@ details[open] .expand-indicator {
 .space-panel[hidden] {
   display: none;
 }
+.space-audio {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+}
+.space-sound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: #eeecf4;
+  background: rgba(13, 12, 23, 0.78);
+  border: 1px solid rgba(183, 160, 238, 0.35);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+.space-sound:hover,
+.space-sound:focus-visible {
+  border-color: #c4b0ff;
+}
+.space-sound[aria-pressed='false'] {
+  color: #938da4;
+}
 .space-open {
   position: absolute;
   left: 24px;
@@ -1321,6 +1349,10 @@ details[open] .expand-indicator {
 @media (max-width: 640px) {
   .space-open {
     left: 16px;
+    bottom: 16px;
+  }
+  .space-audio {
+    right: 16px;
     bottom: 16px;
   }
   .space-panel {

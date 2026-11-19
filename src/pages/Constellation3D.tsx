@@ -6,6 +6,8 @@ import { SKILLS } from '../data/skills'
 import { TECHNOS } from '../data/technos'
 import { buildConstellation, type StarNode } from '../three/constellationData'
 import ConstellationScene, { STAR_COLORS } from '../three/ConstellationScene'
+import { playStarSound } from '../three/sound'
+import { useSpaceMusic } from '../three/useSpaceMusic'
 
 function hasWebGL() {
   try {
@@ -23,9 +25,13 @@ export default function Constellation3D() {
   const [selected, setSelected] = useState<string | null>(null)
   // On phones the panel would hide most of the sky, so it starts closed.
   const [panelOpen, setPanelOpen] = useState(() => !window.matchMedia('(max-width: 640px)').matches)
+  const music = useSpaceMusic()
   const select = (id: string | null) => {
     setSelected(id)
-    if (id) setPanelOpen(true)
+    if (!id) return
+    setPanelOpen(true)
+    const node = graph.byId.get(id)
+    if (node && music.soundOnRef.current) playStarSound(node.kind)
   }
   const closePanel = () => {
     setSelected(null)
@@ -71,6 +77,27 @@ export default function Constellation3D() {
 
   return (
     <div className="space-page">
+      <div className="space-audio">
+        {music.hasPlaylist && music.soundOn && (
+          <button
+            className="space-sound"
+            onClick={music.skip}
+            aria-label={t('space.nextTrack')}
+            title={t('space.nowPlaying', { title: music.title })}
+          >
+            <NextIcon />
+          </button>
+        )}
+        <button
+          className="space-sound"
+          onClick={music.toggle}
+          aria-pressed={music.soundOn}
+          aria-label={t(music.soundOn ? 'space.soundOff' : 'space.soundOn')}
+          title={t(music.soundOn ? 'space.soundOff' : 'space.soundOn')}
+        >
+          <SoundIcon on={music.soundOn} />
+        </button>
+      </div>
       <h1 className="sr-only">{t('space.title')}</h1>
       <ConstellationScene
         graph={graph}
@@ -226,6 +253,38 @@ function CloseIcon() {
         strokeWidth="1.8"
         strokeLinecap="round"
       />
+    </svg>
+  )
+}
+
+function SoundIcon({ on }: { on: boolean }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />
+      {on ? (
+        <path
+          d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+      ) : (
+        <path
+          d="M16 9l5 6M21 9l-5 6"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+      )}
+    </svg>
+  )
+}
+
+function NextIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 5l10 7-10 7z" fill="currentColor" />
+      <rect x="16.5" y="5" width="2.5" height="14" rx="1" fill="currentColor" />
     </svg>
   )
 }
