@@ -13,7 +13,7 @@ import {
   playTravelSound,
 } from '../three/sound'
 import { useSpaceMusic } from '../three/useSpaceMusic'
-import { BLACK_HOLE_ID } from '../three/BlackHole'
+import { BLACK_HOLE_ID, SUCTION_DURATION } from '../three/BlackHole'
 
 function hasWebGL() {
   try {
@@ -35,12 +35,27 @@ export default function Constellation3D() {
   const navigate = useNavigate()
   const [travelId, setTravelId] = useState<string | null>(null)
   const [blackHole, setBlackHole] = useState(false)
-  const [toast, setToast] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
+  const toastTimer = useRef<number>()
+  const showToast = (text: string) => {
+    window.clearTimeout(toastTimer.current)
+    setToast(text)
+    toastTimer.current = window.setTimeout(() => setToast(null), 5000)
+  }
+  const [suction, setSuction] = useState(false)
+  /** Second easter egg: clicking the selected black hole makes it eat everything. */
+  const startSuction = () => {
+    if (suction) return
+    setSelected(null)
+    setSuction(true)
+    showToast(t('space.suction'))
+    if (music.soundOnRef.current) playBlackHoleSound()
+    window.setTimeout(() => setSuction(false), SUCTION_DURATION * 1000)
+  }
   const findBlackHole = () => {
     if (blackHole) return
     setBlackHole(true)
-    setToast(true)
-    window.setTimeout(() => setToast(false), 5000)
+    showToast(t('space.blackHole'))
     if (music.soundOnRef.current) playBlackHoleSound()
   }
   // Second way in: type the secret word anywhere on the page.
@@ -72,6 +87,7 @@ export default function Constellation3D() {
     const clicked = id ? graph.byId.get(id) : undefined
     // Second click on the selected project: go to its page.
     if (clicked && id === selected && clicked.kind === 'project') return travel(clicked)
+    if (id === BLACK_HOLE_ID && selected === BLACK_HOLE_ID) return startSuction()
     setSelected(id)
     if (!id) return
     setPanelOpen(true)
@@ -164,8 +180,8 @@ export default function Constellation3D() {
       <h1 className="sr-only">{t('space.title')}</h1>
       {travelId && <div className="space-warp" aria-hidden="true" />}
       {toast && (
-        <p className="space-toast" role="status">
-          {t('space.blackHole')}
+        <p key={toast} className="space-toast" role="status">
+          {toast}
         </p>
       )}
       <ConstellationScene
@@ -178,6 +194,7 @@ export default function Constellation3D() {
         travelId={travelId}
         blackHole={blackHole}
         onSecretFound={findBlackHole}
+        suction={suction}
         reducedMotion={reducedMotion}
         onHover={setHovered}
         onSelect={select}
@@ -197,7 +214,7 @@ export default function Constellation3D() {
         id="space-panel"
         className="space-panel"
         aria-live="polite"
-        hidden={!panelOpen || !!travelId}
+        hidden={!panelOpen || !!travelId || suction}
       >
         {selected === BLACK_HOLE_ID ? (
           <div className="space-card">

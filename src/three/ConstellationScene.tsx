@@ -4,7 +4,7 @@ import { Html, Line, OrbitControls, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 import type { ConstellationGraph, StarKind, StarNode } from './constellationData'
-import { BLACK_HOLE_ID, BLACK_HOLE_POSITION, BlackHole, HiddenStar } from './BlackHole'
+import { BLACK_HOLE_ID, BLACK_HOLE_POSITION, BlackHole, HiddenStar, suctionPose } from './BlackHole'
 
 export const STAR_COLORS: Record<StarKind, string> = {
   project: '#c4b0ff',
@@ -46,6 +46,8 @@ interface SceneProps {
   /** Easter egg: the black hole has been found and is now visible. */
   blackHole: boolean
   onSecretFound: () => void
+  /** Second easter egg: the black hole is swallowing the constellation. */
+  suction: boolean
   reducedMotion: boolean
   onHover: (id: string | null) => void
   onSelect: (id: string | null) => void
@@ -61,6 +63,7 @@ function Star({
   glow,
   phase,
   reducedMotion,
+  suctionStart,
   onHover,
   onSelect,
 }: {
@@ -74,17 +77,31 @@ function Star({
   glow: THREE.Texture
   phase: number
   reducedMotion: boolean
+  /** Clock time when the black hole started eating, or null. Read every frame. */
+  suctionStart: React.MutableRefObject<number | null>
   onHover: SceneProps['onHover']
   onSelect: SceneProps['onSelect']
 }) {
   const halo = useRef<THREE.Sprite>(null)
   const core = useRef<THREE.Mesh>(null)
   const ring = useRef<THREE.Mesh>(null)
+  const group = useRef<THREE.Group>(null)
+  const labelBox = useRef<HTMLDivElement>(null)
+  const base = useMemo(() => new THREE.Vector3(...node.position), [node])
   const size = STAR_SIZE[node.kind]
   const color = STAR_COLORS[node.kind]
   const target = state === 'active' ? 1.6 : state === 'dim' ? 0.55 : 1
 
   useFrame(({ clock }, delta) => {
+    if (group.current) {
+      const start = suctionStart.current
+      const scale =
+        start === null
+          ? (group.current.position.copy(base), 1)
+          : suctionPose(base, clock.elapsedTime - start, group.current.position)
+      group.current.scale.setScalar(Math.max(scale, 0.0001))
+      if (labelBox.current) labelBox.current.style.opacity = String(scale)
+    }
     if (core.current && node.kind !== 'techno' && !reducedMotion)
       core.current.rotation.y += delta * (node.kind === 'skill' ? 0.8 : 0.3)
     if (!halo.current) return
@@ -104,7 +121,7 @@ function Star({
 
   const showLabel = node.kind !== 'techno' || state === 'active'
   return (
-    <group position={node.position}>
+    <group ref={group} position={node.position}>
       <mesh ref={core} rotation={node.kind === 'project' ? [1.1, 0, 0.3] : [0, 0, 0]}>
         {node.kind === 'skill' ? (
           <octahedronGeometry args={[size * 1.3]} />
@@ -150,6 +167,7 @@ function Star({
       </mesh>
       {showLabel && (
         <Html
+          ref={labelBox}
           center
           position={[0, -size - 0.45, 0]}
           zIndexRange={[10, 0]}
@@ -171,16 +189,33 @@ function CameraRig({
   target,
   travel,
   approach,
+  sideView,
 }: {
   controls: React.RefObject<OrbitControlsImpl>
   target: THREE.Vector3
   travel: StarNode | undefined
   /** True while the black hole is selected: it is far away, so fly closer for a few seconds. */
   approach: boolean
+  /** During the suction: watch from the side, so the hole and the constellation are both in view. */
+  sideView: boolean
 }) {
   const camera = useThree((state) => state.camera) as THREE.PerspectiveCamera
   const approachStart = useRef<number | null>(null)
+  const side = useRef<{ start: number; goal: THREE.Vector3 } | null>(null)
   useFrame(({ clock }, delta) => {
+    if (sideView && !side.current) {
+      // Goal: perpendicular to the centre -> black hole line, on the camera's current side.
+      const axis = new THREE.Vector3(...BLACK_HOLE_POSITION).normalize()
+      const middle = new THREE.Vector3(...BLACK_HOLE_POSITION).multiplyScalar(0.5)
+      const away = camera.position.clone().sub(middle)
+      away.sub(axis.clone().multiplyScalar(away.dot(axis)))
+      if (away.lengthSq() < 1e-3) away.set(0, 1, 0).cross(axis)
+      const goal = middle.add(away.setLength(46))
+      side.current = { start: clock.elapsedTime, goal }
+    }
+    if (!sideView) side.current = null
+    if (side.current && clock.elapsedTime - side.current.start < 4)
+      camera.position.lerp(side.current.goal, 1 - Math.exp(-1.6 * delta))
     if (approach) approachStart.current ??= clock.elapsedTime
     else approachStart.current = null
     const approaching =
@@ -210,6 +245,24 @@ function CameraRig({
   return null
 }
 
+/** Starts and stops the suction clock, and hides the links while stars are moving. */
+function SuctionClock({
+  active,
+  start,
+  edges,
+}: {
+  active: boolean
+  start: React.MutableRefObject<number | null>
+  edges: React.RefObject<THREE.Group>
+}) {
+  useFrame(({ clock }) => {
+    if (active) start.current ??= clock.elapsedTime
+    else start.current = null
+    if (edges.current) edges.current.visible = start.current === null
+  })
+  return null
+}
+
 function Constellation({
   graph,
   labels,
@@ -220,12 +273,15 @@ function Constellation({
   travelId,
   blackHole,
   onSecretFound,
+  suction,
   reducedMotion,
   onHover,
   onSelect,
 }: SceneProps) {
   const glow = useGlowTexture()
   const controls = useRef<OrbitControlsImpl>(null)
+  const suctionStart = useRef<number | null>(null)
+  const edges = useRef<THREE.Group>(null)
   const focus = focusId ? graph.byId.get(focusId) : undefined
   const selected = selectedId ? graph.byId.get(selectedId) : undefined
   const target = useMemo(
@@ -235,9 +291,12 @@ function Constellation({
           ? selected.position
           : selectedId === BLACK_HOLE_ID
             ? BLACK_HOLE_POSITION
-            : [0, 0, 0]),
+            : suction
+              ? // Halfway, so both the hole and the constellation stay in view.
+                BLACK_HOLE_POSITION.map((v) => v / 2)
+              : [0, 0, 0]),
       ),
-    [selected, selectedId],
+    [selected, selectedId, suction],
   )
 
   const stateOf = (node: StarNode) => {
@@ -248,25 +307,28 @@ function Constellation({
   return (
     <>
       <color attach="background" args={['#07060f']} />
-      <fog attach="fog" args={['#07060f', 22, 48]} />
+      <fog attach="fog" args={['#07060f', 26, 80]} />
       <Stars radius={70} depth={40} count={2500} factor={3} fade speed={reducedMotion ? 0 : 0.6} />
 
-      {graph.edges.map((edge) => {
-        const a = graph.byId.get(edge.from)!
-        const b = graph.byId.get(edge.to)!
-        const lit = focus && (edge.from === focus.id || edge.to === focus.id)
-        return (
-          <Line
-            key={`${edge.from}-${edge.to}`}
-            points={[a.position, b.position]}
-            color={lit ? STAR_COLORS[focus.kind] : '#9d8fd0'}
-            lineWidth={lit ? 1.8 : 1}
-            transparent
-            opacity={lit ? 0.9 : focus ? 0.05 : edge.family ? 0.12 : 0.22}
-            depthWrite={false}
-          />
-        )
-      })}
+      <SuctionClock active={suction} start={suctionStart} edges={edges} />
+      <group ref={edges}>
+        {graph.edges.map((edge) => {
+          const a = graph.byId.get(edge.from)!
+          const b = graph.byId.get(edge.to)!
+          const lit = focus && (edge.from === focus.id || edge.to === focus.id)
+          return (
+            <Line
+              key={`${edge.from}-${edge.to}`}
+              points={[a.position, b.position]}
+              color={lit ? STAR_COLORS[focus.kind] : '#9d8fd0'}
+              lineWidth={lit ? 1.8 : 1}
+              transparent
+              opacity={lit ? 0.9 : focus ? 0.05 : edge.family ? 0.12 : 0.22}
+              depthWrite={false}
+            />
+          )
+        })}
+      </group>
 
       {graph.nodes.map((node, index) => (
         <Star
@@ -280,13 +342,14 @@ function Constellation({
           glow={glow}
           phase={index * 1.37}
           reducedMotion={reducedMotion}
+          suctionStart={suctionStart}
           onHover={onHover}
           onSelect={onSelect}
         />
       ))}
 
       {blackHole ? (
-        <BlackHole reducedMotion={reducedMotion} onSelect={onSelect} />
+        <BlackHole reducedMotion={reducedMotion} suctionStart={suctionStart} onSelect={onSelect} />
       ) : (
         <HiddenStar glow={glow} onFound={onSecretFound} />
       )}
@@ -306,6 +369,7 @@ function Constellation({
         target={target}
         travel={travelId ? graph.byId.get(travelId) : undefined}
         approach={selectedId === BLACK_HOLE_ID}
+        sideView={suction}
       />
     </>
   )
