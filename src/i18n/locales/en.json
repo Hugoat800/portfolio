@@ -906,6 +906,7 @@
     "soundOn": "Turn sound on",
     "soundOff": "Mute sound",
     "nextTrack": "Next track",
-    "nowPlaying": "Now playing: {{title}}. Click for the next one"
+    "nowPlaying": "Now playing: {{title}}. Click for the next one",
+    "volume": "Music volume"
   }
 }

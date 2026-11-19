@@ -16,7 +16,10 @@ export const PLAYLIST: Track[] = [
   { src: '/audio/musique-2.mp3', title: 'Musique 2' },
   { src: '/audio/musique-3.mp3', title: 'Musique 3' },
 ]
+/** Default music volume, from 0 to 1. */
 export const MUSIC_VOLUME = 0.07
+/** Highest volume the slider allows, so the music never gets too loud. */
+export const MUSIC_MAX_VOLUME = 0.2
 
 /** Sound played when a star is clicked, one file per kind of star. */
 export const CLICK_SOUNDS: Record<StarKind, string> = {

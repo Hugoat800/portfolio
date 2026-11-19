@@ -6,7 +6,7 @@ import { SKILLS } from '../data/skills'
 import { TECHNOS } from '../data/technos'
 import { buildConstellation, type StarNode } from '../three/constellationData'
 import ConstellationScene, { STAR_COLORS } from '../three/ConstellationScene'
-import { playStarSound, playTravelSound } from '../three/sound'
+import { MUSIC_MAX_VOLUME, playStarSound, playTravelSound } from '../three/sound'
 import { useSpaceMusic } from '../three/useSpaceMusic'
 
 function hasWebGL() {
@@ -96,6 +96,22 @@ export default function Constellation3D() {
   return (
     <div className="space-page">
       <div className="space-audio">
+        {music.soundOn && (
+          <input
+            className="space-volume"
+            type="range"
+            min={0}
+            max={MUSIC_MAX_VOLUME}
+            step={0.005}
+            value={music.volume}
+            onChange={(e) => music.setVolume(Number(e.target.value))}
+            aria-label={t('space.volume')}
+            title={t('space.volume')}
+            style={
+              { '--fill': `${(music.volume / MUSIC_MAX_VOLUME) * 100}%` } as React.CSSProperties
+            }
+          />
+        )}
         {music.hasPlaylist && music.soundOn && (
           <button
             className="space-sound"

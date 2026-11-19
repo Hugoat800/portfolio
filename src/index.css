@@ -1134,6 +1134,39 @@ details[open] .expand-indicator {
   display: flex;
   gap: 8px;
 }
+.space-audio {
+  align-items: center;
+}
+/* Music volume slider, filled with the accent colour up to the current value. */
+.space-volume {
+  width: 90px;
+  height: 4px;
+  margin-right: 4px;
+  appearance: none;
+  background: linear-gradient(90deg, #c4b0ff var(--fill), rgba(255, 255, 255, 0.18) var(--fill));
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.space-volume::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  appearance: none;
+  background: #eeecf4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(196, 176, 255, 0.8);
+}
+.space-volume::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #eeecf4;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(196, 176, 255, 0.8);
+}
+.space-volume:focus-visible {
+  outline: 2px solid #c4b0ff;
+  outline-offset: 4px;
+}
 .space-sound {
   display: flex;
   align-items: center;

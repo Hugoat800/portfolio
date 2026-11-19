@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { MUSIC_VOLUME, PLAYLIST } from './sound'
+import { MUSIC_MAX_VOLUME, MUSIC_VOLUME, PLAYLIST } from './sound'
 
 const STORAGE_KEY = 'space-sound'
+const VOLUME_KEY = 'space-volume'
 
 /**
  * Background playlist of the 3D page. Starts on a random track, plays them in
@@ -20,6 +21,18 @@ export function useSpaceMusic() {
   })
   const soundOnRef = useRef(soundOn)
   soundOnRef.current = soundOn
+  const [volume, setVolumeState] = useState(() => {
+    try {
+      const saved = Number(localStorage.getItem(VOLUME_KEY))
+      if (localStorage.getItem(VOLUME_KEY) !== null && Number.isFinite(saved))
+        return Math.min(Math.max(saved, 0), MUSIC_MAX_VOLUME)
+    } catch {
+      /* Fall back to the default volume. */
+    }
+    return MUSIC_VOLUME
+  })
+  const volumeRef = useRef(volume)
+  volumeRef.current = volume
   const started = useRef(false)
   const failures = useRef(0)
 
@@ -27,7 +40,7 @@ export function useSpaceMusic() {
     const el = audio.current
     if (!el || !soundOnRef.current || !PLAYLIST.length) return
     started.current = true
-    el.volume = MUSIC_VOLUME
+    el.volume = volumeRef.current
     el.play().catch(() => {
       /* The browser refused or the file is missing: the error handler moves on. */
     })
@@ -86,6 +99,18 @@ export function useSpaceMusic() {
     else audio.current?.pause()
   }
 
+  const setVolume = (value: number) => {
+    const clamped = Math.min(Math.max(value, 0), MUSIC_MAX_VOLUME)
+    setVolumeState(clamped)
+    volumeRef.current = clamped
+    if (audio.current) audio.current.volume = clamped
+    try {
+      localStorage.setItem(VOLUME_KEY, String(clamped))
+    } catch {
+      /* Keep working without storage. */
+    }
+  }
+
   const skip = () => {
     failures.current = 0
     started.current = true
@@ -97,6 +122,8 @@ export function useSpaceMusic() {
     soundOnRef,
     toggle,
     skip,
+    volume,
+    setVolume,
     title: PLAYLIST[track]?.title ?? '',
     hasPlaylist: PLAYLIST.length > 1,
   }
