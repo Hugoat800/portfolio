@@ -824,7 +824,7 @@
         {
           "title": "The 3D version",
           "paragraphs": [
-            "A friend's portfolio had a 3D solar system, which made me want to try Three.js. I went for a constellation: each project is linked to the technologies and skills it uses, which shows how my projects connect instead of just listing them. The 3D code is loaded separately, so the classic version stays as fast as before."
+            "A friend's portfolio had a 3D solar system, which made me want to try Three.js. I went for a constellation: each project is linked to the technologies and skills it uses, which shows how my projects connect instead of just listing them. The 3D code is loaded separately, so the classic version stays as fast as before. I built this 3D part with the help of Claude, an AI assistant, which guided me through Three.js and React Three Fiber."
           ],
           "features": []
         },

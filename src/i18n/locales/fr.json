@@ -586,7 +586,7 @@
         {
           "title": "La version 3D",
           "paragraphs": [
-            "Un ami avait fait un système solaire pour son portfolio, ça m'a donné envie d'essayer Three.js. J'ai choisi une constellation : chaque projet est relié aux technos et aux compétences qu'il utilise, ce qui montre les liens entre mes projets plutôt qu'une simple liste. La 3D est chargée à part, la version classique reste donc aussi rapide qu'avant."
+            "Un ami avait fait un système solaire pour son portfolio, ça m'a donné envie d'essayer Three.js. J'ai choisi une constellation : chaque projet est relié aux technos et aux compétences qu'il utilise, ce qui montre les liens entre mes projets plutôt qu'une simple liste. La 3D est chargée à part, la version classique reste donc aussi rapide qu'avant. J'ai codé cette partie 3D avec l'aide de Claude, un assistant IA, qui m'a accompagné pour découvrir Three.js et React Three Fiber."
           ],
           "features": []
         },
