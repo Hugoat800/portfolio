@@ -81,6 +81,7 @@ export const TECHNOS: Techno[] = [
   { name: 'Firebase', categories: ['Base de données'], logo: '/logo/firebase.svg' },
 
   { name: 'Docker', categories: ['DevOps'], logo: '/logo/Docker-svgrepo-com.svg.png' },
+  { name: 'Ansible', categories: ['DevOps'], logo: '/logo/ansible.svg' },
 
   { name: 'Git', categories: ['Outils'], logo: '/logo/Git_icon.svg.png' },
   { name: 'Figma', categories: ['Outils'], logo: '/logo/Figma.svg.png' },
