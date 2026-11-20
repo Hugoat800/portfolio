@@ -5,15 +5,11 @@
   padding: 0;
   flex-shrink: 0;
   border-radius: 9999px;
-  border: 1px solid rgba(139, 92, 246, 0.4);
-  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
   transition:
     background 0.3s,
     border-color 0.3s;
-}
-.theme-toggle[data-theme='light'] {
-  border-color: #c4b5fd;
-  background: #ede9fe;
 }
 .theme-toggle-icons {
   position: absolute;
@@ -37,14 +33,12 @@
   width: 1.375rem;
   height: 1.375rem;
   border-radius: 50%;
-  background: #a78bfa;
-  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+  background: var(--toggle-thumb);
+  box-shadow: var(--toggle-thumb-shadow);
   transition:
     left 0.3s,
     background 0.3s;
 }
 .theme-toggle[data-theme='light'] .theme-toggle-thumb {
   left: 2px;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }

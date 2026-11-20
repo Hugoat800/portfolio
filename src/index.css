@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Theme variables. Component styles live next to each component. */
 :root {
   color-scheme: dark;
   --bg-base: #0d0c17;
@@ -11,21 +13,80 @@
   --text-muted: #938da4;
   --accent: #b7a0ee;
   --accent-solid: #7250bf;
+  --accent-hover: #61409f;
   --border-subtle: #292534;
   --border-default: #494058;
   --header-bg: rgba(13, 12, 23, 0.96);
+
+  /* Theme switch */
+  --toggle-bg: rgba(139, 92, 246, 0.2);
+  --toggle-border: rgba(139, 92, 246, 0.4);
+  --toggle-thumb: #a78bfa;
+  --toggle-thumb-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+
+  /* 3D constellation: panel and controls floating over the scene */
+  --space-surface: #14121f;
+  --space-control-bg: rgba(13, 12, 23, 0.78);
+  --space-border: rgba(183, 160, 238, 0.35);
+  --space-border-soft: rgba(183, 160, 238, 0.18);
+  --space-text: #eeecf4;
+  --space-text-soft: #cfcbdc;
+  --space-muted: #938da4;
+  --space-accent: #c4b0ff;
+  --space-glow: rgba(196, 176, 255, 0.8);
+  --space-track: rgba(255, 255, 255, 0.18);
+  --space-thumb: #eeecf4;
+  --space-chip-bg: rgba(255, 255, 255, 0.04);
+  --space-chip-hover: rgba(255, 255, 255, 0.12);
+  --space-close-bg: rgba(7, 6, 15, 0.7);
+  --space-badge-text: #07060f;
+  --space-toast-text: #ffe8c8;
+
+  /* Star colours used by the panel. The 3D scene keeps its own glowing tints. */
+  --star-project: #c4b0ff;
+  --star-skill: #f5cf86;
+  --star-techno: #8fd6ff;
+  --star-blackhole: #ffb36b;
 }
 .light {
   color-scheme: light;
-  --bg-base: #f7f5fa;
-  --bg-surface: #ffffff;
-  --bg-elevated: #ede8f5;
-  --text-primary: #241d33;
-  --text-secondary: #625870;
-  --text-muted: #70657e;
-  --accent: #6741ab;
-  --accent-solid: #6741ab;
-  --border-subtle: #ded7e9;
-  --border-default: #b6a8c9;
-  --header-bg: rgba(247, 245, 250, 0.96);
+  --bg-base: #e8e4ee;
+  --bg-surface: #f1eef5;
+  --bg-elevated: #ddd7e6;
+  --text-primary: #211a2e;
+  --text-secondary: #524862;
+  --text-muted: #5e5470;
+  --accent: #5c389c;
+  --accent-solid: #5c389c;
+  --accent-hover: #4b2c82;
+  --border-subtle: #d3cbdf;
+  --border-default: #a99bbd;
+  --header-bg: rgba(232, 228, 238, 0.96);
+
+  --toggle-bg: #d9d0ea;
+  --toggle-border: #b6a3dc;
+  --toggle-thumb: #f4f1f8;
+  --toggle-thumb-shadow: 0 1px 3px rgba(33, 26, 46, 0.25);
+
+  --space-surface: rgba(230, 225, 238, 0.94);
+  --space-control-bg: rgba(230, 225, 238, 0.88);
+  --space-border: rgba(92, 56, 156, 0.4);
+  --space-border-soft: rgba(92, 56, 156, 0.18);
+  --space-text: #211a2e;
+  --space-text-soft: #524862;
+  --space-muted: #5e5470;
+  --space-accent: #5c389c;
+  --space-glow: rgba(92, 56, 156, 0.45);
+  --space-track: rgba(33, 26, 46, 0.2);
+  --space-thumb: #5c389c;
+  --space-chip-bg: rgba(255, 255, 255, 0.35);
+  --space-chip-hover: rgba(255, 255, 255, 0.75);
+  --space-close-bg: rgba(241, 238, 245, 0.85);
+  --space-badge-text: #ffffff;
+  --space-toast-text: #7a3510;
+
+  --star-project: #5c389c;
+  --star-skill: #8a5806;
+  --star-techno: #1c6690;
+  --star-blackhole: #a8480f;
 }

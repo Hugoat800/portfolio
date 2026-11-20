@@ -5,7 +5,7 @@ import { PROJECTS } from '../../data/projects'
 import { SKILLS } from '../../data/skills'
 import { TECHNOS } from '../../data/technos'
 import { buildConstellation, type StarNode } from '../../three/constellationData'
-import ConstellationScene, { STAR_COLORS } from '../../three/ConstellationScene/ConstellationScene'
+import ConstellationScene from '../../three/ConstellationScene/ConstellationScene'
 import {
   MUSIC_MAX_VOLUME,
   playBlackHoleSound,
@@ -222,7 +222,7 @@ export default function Constellation3D() {
             <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
               <CloseIcon />
             </button>
-            <p className="space-kind" style={{ color: '#ffb36b' }}>
+            <p className="space-kind" style={{ color: 'var(--star-blackhole)' }}>
               {t('space.blackHoleCard.kind')}
             </p>
             <h2>{t('space.blackHoleCard.title')}</h2>
@@ -236,7 +236,7 @@ export default function Constellation3D() {
             <button className="space-close" onClick={closePanel} aria-label={t('space.close')}>
               <CloseIcon />
             </button>
-            <p className="space-kind" style={{ color: STAR_COLORS[current.kind] }}>
+            <p className="space-kind" style={{ color: `var(--star-${current.kind})` }}>
               {t(`space.legend.${current.kind}`)} {badgeOf(current)}
             </p>
             <h2 className="space-title">
@@ -300,7 +300,7 @@ export default function Constellation3D() {
             <ul className="space-legend">
               {(['project', 'skill', 'techno'] as const).map((kind) => (
                 <li key={kind}>
-                  <span style={{ background: STAR_COLORS[kind] }} aria-hidden="true" />
+                  <span style={{ background: `var(--star-${kind})` }} aria-hidden="true" />
                   {t(`space.legend.${kind}`)}
                 </li>
               ))}
@@ -345,7 +345,7 @@ function Chips({
           <li key={node.id}>
             <button
               onClick={() => onSelect(node.id)}
-              style={{ borderColor: STAR_COLORS[node.kind] }}
+              style={{ borderColor: `var(--star-${node.kind})` }}
             >
               {badgeOf(node) && <b className="star-badge">{badgeOf(node)}</b>}
               {logoOf(node) && <img src={logoOf(node)} alt="" aria-hidden="true" />}

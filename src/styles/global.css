@@ -94,7 +94,7 @@ ol {
   border: 1px solid var(--accent-solid);
 }
 .btn-primary:hover {
-  background: #61409f;
+  background: var(--accent-hover);
 }
 .btn-outline {
   border: 1px solid var(--border-default);
