@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { PROFILE } from '../../data/profile'
 import './Hero.css'
 export default function Hero() {
@@ -16,24 +17,24 @@ export default function Hero() {
           <p className="hero-location">{t('hero.location')}</p>
           <p className="hero-description">{t('hero.description')}</p>
           <div className="hero-actions">
-            <a href="#projets" className="btn-primary">
+            <Link to="/projets" className="btn-primary">
               {t('hero.projects')}
-            </a>
-            <a href="#contact" className="btn-outline">
+            </Link>
+            <Link to="/contact" className="btn-outline">
               {t('hero.contact')}
-            </a>
-            <a href="#a-propos" className="btn-outline">
+            </Link>
+            <Link to="/a-propos" className="btn-outline">
               {t('hero.scroll')}
-            </a>
+            </Link>
           </div>
           <p className="hero-availability">{t('hero.availability')}</p>
         </div>
         <figure className="hero-portrait">
           <img src={PROFILE.portrait} alt={PROFILE.name} />
         </figure>
-        <a href="#a-propos" className="hero-scroll" aria-label={t('hero.scroll')}>
+        <Link to="/a-propos" className="hero-scroll" aria-label={t('hero.scroll')}>
           <span aria-hidden="true">↓</span>
-        </a>
+        </Link>
       </div>
     </section>
   )

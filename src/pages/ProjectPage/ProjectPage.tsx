@@ -13,7 +13,7 @@ export default function ProjectPage() {
     return (
       <div className="not-found container">
         <h1>{t('common.notFound')}</h1>
-        <Link to="/#projets">{t('common.backProjects')}</Link>
+        <Link to="/projets">{t('common.backProjects')}</Link>
       </div>
     )
   const text = content.project(project.slug)
@@ -21,7 +21,7 @@ export default function ProjectPage() {
   return (
     <article className="project-page container">
       <div className="flex gap-4">
-        <Link className="btn-outline" to="/#projets">
+        <Link className="btn-outline" to="/projets">
           {t('common.backProjects')}
         </Link>
         <Link className="btn-outline" to="/3d">

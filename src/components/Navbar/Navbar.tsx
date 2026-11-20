@@ -36,7 +36,7 @@ export default function Navbar({
   return (
     <header className="site-header">
       <div className="header-inner container">
-        <Link to="/#accueil" className="wordmark" aria-label={t('common.home')}>
+        <Link to="/accueil" className="wordmark" aria-label={t('common.home')}>
           <span>{PROFILE.name}</span>
         </Link>
         <nav
@@ -47,7 +47,7 @@ export default function Navbar({
           {NAVIGATION.map((id) => (
             <Link
               key={id}
-              to={`/#${id}`}
+              to={`/${id}`}
               onClick={() => setOpen(false)}
               aria-current={activeId === id ? 'location' : undefined}
             >

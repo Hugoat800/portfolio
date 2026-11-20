@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { Routes, Route, useLocation, Link } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate, useParams, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useScrollSpy } from './hooks/useScrollSpy'
 import { useTheme } from './hooks/useTheme'
@@ -17,22 +17,30 @@ import ProjectPage from './pages/ProjectPage/ProjectPage'
 import ContourBackground from './components/ContourBackground/ContourBackground'
 import './App.css'
 const Constellation3D = lazy(() => import('./pages/Constellation3D/Constellation3D'))
+/** Home sections each have their own address, like /projets, without a #. */
+const isSection = (segment: string | undefined) =>
+  (NAVIGATION as readonly string[]).includes(segment ?? '')
+const sectionOf = (pathname: string) => {
+  const segment = pathname.split('/')[1]
+  return isSection(segment) ? segment : undefined
+}
 function ScrollManager() {
   const { pathname, hash, key } = useLocation()
+  const navigate = useNavigate()
   useEffect(() => {
+    // Old links such as /#projets now point to /projets.
+    const legacy = hash.slice(1)
+    if (isSection(legacy)) {
+      navigate(`/${legacy}`, { replace: true })
+      return
+    }
     const frame = requestAnimationFrame(() => {
-      if (hash) {
-        let id = hash.slice(1)
-        try {
-          id = decodeURIComponent(id)
-        } catch {
-          /* Ignore malformed URL encoding. */
-        }
-        document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
-      } else window.scrollTo({ top: 0, behavior: 'instant' })
+      const section = sectionOf(pathname)
+      if (section) document.getElementById(section)?.scrollIntoView({ behavior: 'instant' })
+      else window.scrollTo({ top: 0, behavior: 'instant' })
     })
     return () => cancelAnimationFrame(frame)
-  }, [pathname, hash, key])
+  }, [pathname, hash, key, navigate])
   return null
 }
 function HomePage() {
@@ -47,6 +55,11 @@ function HomePage() {
       <Contact />
     </>
   )
+}
+/** One route for / and every section, so moving between sections keeps the page mounted. */
+function HomeRoute() {
+  const { section } = useParams()
+  return section === undefined || isSection(section) ? <HomePage /> : <NotFound />
 }
 function NotFound() {
   const { t } = useTranslation()
@@ -68,18 +81,26 @@ export default function App() {
       {!is3D && (
         <ContourBackground className="contour-background--app" duration={18} intensity={0.05} />
       )}
-      <a className="skip-link" href="#main">
+      <a
+        className="skip-link"
+        href="#main"
+        onClick={(event) => {
+          // Move keyboard focus to the content without adding #main to the address.
+          event.preventDefault()
+          document.getElementById('main')?.focus()
+        }}
+      >
         {t('common.skip')}
       </a>
       <ScrollManager />
       <Navbar
-        activeId={location.pathname === '/' ? activeId : ''}
+        activeId={location.pathname === '/' || sectionOf(location.pathname) ? activeId : ''}
         theme={theme}
         onThemeToggle={toggle}
       />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/:section?" element={<HomeRoute />} />
           <Route path="/projet/:slug" element={<ProjectPage />} />
           <Route
             path="/3d"

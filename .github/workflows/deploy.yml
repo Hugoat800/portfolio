@@ -35,6 +35,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      # GitHub Pages serves 404.html for unknown paths: with a copy of the app, addresses
+      # such as /projets or /3d still work when reloaded or opened directly.
+      - name: Fallback for app routes
+        run: cp dist/index.html dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

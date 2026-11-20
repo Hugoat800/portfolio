@@ -9,7 +9,7 @@ export default function Footer() {
       <span>
         © {new Date().getFullYear()} {PROFILE.name}
       </span>
-      <Link to="/#accueil">{t('common.backTop')} </Link>
+      <Link to="/accueil">{t('common.backTop')} </Link>
     </footer>
   )
 }
