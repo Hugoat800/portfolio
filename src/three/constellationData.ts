@@ -27,7 +27,14 @@ export interface ConstellationGraph {
   nodes: StarNode[]
   edges: StarEdge[]
   byId: Map<string, StarNode>
+  /** How much bigger than the default layout the ring is (1 up to 7 projects). */
+  spread: number
 }
+
+/** Ring radius used up to 7 projects. */
+const BASE_RADIUS = 6.5
+/** Distance kept between two neighbouring projects on the ring. */
+const PROJECT_SPACING = (2 * Math.PI * BASE_RADIUS) / 7
 
 /** "Tailwind CSS" and "TailwindCSS" must land on the same star. */
 const normalize = (name: string) => name.toLowerCase().replace(/[^a-z0-9]/g, '')
@@ -89,13 +96,23 @@ export function buildConstellation(): ConstellationGraph {
     edges.push({ from: from.id, to: to.id, family })
   }
 
-  // 1. Projects: the brightest stars, on a tilted ring.
+  // 1. Projects: the brightest stars, on a tilted ring that widens as projects are added.
+  // When there are many, they also alternate between an inner and an outer lane, with a bit
+  // of disorder, so the ring looks less like a perfect circle and neighbours' names overlap less.
+  const radius = Math.max(BASE_RADIUS, (PROJECTS.length * PROJECT_SPACING) / (2 * Math.PI))
+  const spread = radius / BASE_RADIUS
+  const scatter = Math.min(0.22, 0.22 * (spread - 1))
   PROJECTS.forEach((project, index) => {
-    const angle = (index / PROJECTS.length) * Math.PI * 2
+    const step = (Math.PI * 2) / PROJECTS.length
+    // No extra random draws without scatter, so a small portfolio keeps its exact layout.
+    const jitterAngle = scatter ? random() - 0.5 : 0
+    const jitterLane = scatter ? random() - 0.5 : 0
+    const angle = index * step + jitterAngle * step * scatter * 2
+    const lane = radius * (1 + (index % 2 ? 1 : -1) * scatter + jitterLane * scatter * 0.6)
     addNode('project', project.slug, [
-      Math.cos(angle) * 6.5,
-      Math.sin(angle * 2) * 1.6 + (random() - 0.5),
-      Math.sin(angle) * 6.5,
+      Math.cos(angle) * lane,
+      Math.sin(angle * 2) * 1.6 + (random() - 0.5) * (1 + scatter * 10),
+      Math.sin(angle) * lane,
     ])
   })
   const projectNode = (slug: string) => byId.get(`project:${slug}`)!
@@ -104,9 +121,9 @@ export function buildConstellation(): ConstellationGraph {
   SKILLS.forEach(({ id }, index) => {
     const angle = (index / SKILLS.length) * Math.PI * 2 + Math.PI / SKILLS.length
     const node = addNode('skill', id, [
-      Math.cos(angle) * 3.2,
+      Math.cos(angle) * 3.2 * spread,
       index % 2 ? 0.9 : -0.9,
-      Math.sin(angle) * 3.2,
+      Math.sin(angle) * 3.2 * spread,
     ])
     PROJECTS.filter((p) => p.skills.includes(id as CompetenceId)).forEach((p) =>
       link(projectNode(p.slug), node),
@@ -143,7 +160,7 @@ export function buildConstellation(): ConstellationGraph {
   const familyList = [...families.values()]
   familyList.forEach((members, familyIndex) => {
     const direction = fibonacciDirection(familyIndex, familyList.length)
-    const anchor = scale(direction, 14)
+    const anchor = scale(direction, radius + 7.5)
     let previous: StarNode | null = null
     members.forEach((name) => {
       const node = addNode('techno', name, add(anchor, scale(randomUnit(random), 2.4)))
@@ -152,5 +169,5 @@ export function buildConstellation(): ConstellationGraph {
     })
   })
 
-  return { nodes, edges, byId }
+  return { nodes, edges, byId, spread }
 }

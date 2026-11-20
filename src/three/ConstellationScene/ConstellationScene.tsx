@@ -306,6 +306,9 @@ function Constellation({
     [selected, selectedId, suction],
   )
 
+  // The more projects (and so links), the fainter each idle link, so the sky stays readable.
+  const edgeFade = 1 / graph.spread ** 0.9
+
   const stateOf = (node: StarNode) => {
     if (!focus) return 'normal' as const
     return node.id === focus.id || focus.neighbours.has(node.id) ? 'active' : 'dim'
@@ -314,7 +317,7 @@ function Constellation({
   return (
     <>
       <color attach="background" args={['#07060f']} />
-      <fog attach="fog" args={['#07060f', 26, 80]} />
+      <fog attach="fog" args={['#07060f', 26 * graph.spread, 80 * graph.spread]} />
       <Stars radius={70} depth={40} count={2500} factor={3} fade speed={reducedMotion ? 0 : 0.6} />
 
       <SuctionClock active={suction} start={suctionStart} edges={edges} />
@@ -330,7 +333,7 @@ function Constellation({
               color={lit ? STAR_COLORS[focus.kind] : '#9d8fd0'}
               lineWidth={lit ? 1.8 : 1}
               transparent
-              opacity={lit ? 0.9 : focus ? 0.05 : edge.family ? 0.12 : 0.22}
+              opacity={lit ? 0.9 : (focus ? 0.05 : edge.family ? 0.12 : 0.22) * edgeFade}
               depthWrite={false}
             />
           )
@@ -367,7 +370,7 @@ function Constellation({
         enablePan={false}
         enableDamping
         minDistance={5}
-        maxDistance={42}
+        maxDistance={42 * graph.spread}
         autoRotate={!reducedMotion && !selectedId}
         autoRotateSpeed={0.07}
       />
@@ -385,9 +388,15 @@ function Constellation({
 export default function ConstellationScene(props: SceneProps) {
   return (
     <Canvas
-      // Portrait screens need the camera further back to fit the whole ring.
+      // Portrait screens need the camera further back to fit the whole ring. A wider ring
+      // (many projects) moves it back less than it grows, so the ring fills more of the
+      // screen and the names spread out, and higher up so the far side is less squashed.
       camera={{
-        position: [0, 6, window.innerWidth < window.innerHeight ? 34 : 22],
+        position: [
+          0,
+          6 * props.graph.spread,
+          (window.innerWidth < window.innerHeight ? 34 : 22) * props.graph.spread ** 0.75,
+        ],
         fov: 55,
       }}
       dpr={[1, 2]}
