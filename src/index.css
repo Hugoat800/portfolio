@@ -33,9 +33,11 @@
   --space-text-soft: #cfcbdc;
   --space-muted: #938da4;
   --space-accent: #c4b0ff;
-  --space-glow: rgba(196, 176, 255, 0.8);
-  --space-track: rgba(255, 255, 255, 0.18);
-  --space-thumb: #eeecf4;
+  /* Volume bar: the light theme uses the dark one's colours and vice versa. */
+  --volume-fill: #5c389c;
+  --volume-track: rgba(33, 26, 46, 0.2);
+  --volume-thumb: #5c389c;
+  --volume-glow: rgba(92, 56, 156, 0.45);
   --space-chip-bg: rgba(255, 255, 255, 0.04);
   --space-chip-hover: rgba(255, 255, 255, 0.12);
   --space-close-bg: rgba(7, 6, 15, 0.7);
@@ -76,9 +78,10 @@
   --space-text-soft: #524862;
   --space-muted: #5e5470;
   --space-accent: #5c389c;
-  --space-glow: rgba(92, 56, 156, 0.45);
-  --space-track: rgba(33, 26, 46, 0.2);
-  --space-thumb: #5c389c;
+  --volume-fill: #c4b0ff;
+  --volume-track: rgba(255, 255, 255, 0.18);
+  --volume-thumb: #eeecf4;
+  --volume-glow: rgba(196, 176, 255, 0.8);
   --space-chip-bg: rgba(255, 255, 255, 0.35);
   --space-chip-hover: rgba(255, 255, 255, 0.75);
   --space-close-bg: rgba(241, 238, 245, 0.85);
