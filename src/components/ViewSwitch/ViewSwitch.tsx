@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import './ViewSwitch.css'
 
 /** Header button between the classic site and the 3D constellation. */
 export default function ViewSwitch() {

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { TECHNOS, CATEGORIES_TECHNOS } from '../data/technos'
-import Section from './Section'
+import { TECHNOS, CATEGORIES_TECHNOS } from '../../data/technos'
+import Section from '../Section/Section'
+import './Technologies.css'
 export default function Technologies() {
   const { t } = useTranslation()
   const [category, setCategory] = useState<string | null>(null)

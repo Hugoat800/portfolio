@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
-import { PROFILE } from '../data/profile'
-import Section from './Section'
-import ContactRow from './ContactRow'
+import { PROFILE } from '../../data/profile'
+import Section from '../Section/Section'
+import ContactRow from '../ContactRow/ContactRow'
+import './Contact.css'
 export default function Contact() {
   const { t } = useTranslation()
   return (

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import Section from './Section'
+import Section from '../Section/Section'
+import './Experience.css'
 export default function Experience() {
   const { t } = useTranslation()
   const entries = t('experience.entries', { returnObjects: true }) as {

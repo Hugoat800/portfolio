@@ -1,0 +1,318 @@
+.space-page {
+  position: fixed;
+  inset: 0;
+  background: #07060f;
+}
+.space-fallback {
+  padding-top: 140px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.space-panel {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100svh - 130px);
+  overflow-y: auto;
+  z-index: 20;
+  color: #eeecf4;
+}
+.space-panel[hidden] {
+  display: none;
+}
+.space-audio {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+}
+.space-audio {
+  align-items: center;
+}
+/* Music volume slider, filled with the accent colour up to the current value. */
+.space-volume {
+  width: 90px;
+  height: 4px;
+  margin-right: 4px;
+  appearance: none;
+  background: linear-gradient(90deg, #c4b0ff var(--fill), rgba(255, 255, 255, 0.18) var(--fill));
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.space-volume::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  appearance: none;
+  background: #eeecf4;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(196, 176, 255, 0.8);
+}
+.space-volume::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #eeecf4;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(196, 176, 255, 0.8);
+}
+.space-volume:focus-visible {
+  outline: 2px solid #c4b0ff;
+  outline-offset: 4px;
+}
+.space-sound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: #eeecf4;
+  background: rgba(13, 12, 23, 0.78);
+  border: 1px solid rgba(183, 160, 238, 0.35);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+.space-sound:hover,
+.space-sound:focus-visible {
+  border-color: #c4b0ff;
+}
+.space-sound[aria-pressed='false'] {
+  color: #938da4;
+}
+.space-open {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  z-index: 20;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #eeecf4;
+  background: rgba(13, 12, 23, 0.78);
+  border: 1px solid rgba(183, 160, 238, 0.35);
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+}
+.space-open:hover,
+.space-open:focus-visible {
+  border-color: #c4b0ff;
+}
+.space-card {
+  position: relative;
+  padding: 20px 22px;
+  border: 1px solid rgba(183, 160, 238, 0.25);
+  border-radius: 16px;
+  background: var(--bg-surface);
+  backdrop-filter: blur(10px);
+}
+.space-card h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+.space-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cfcbdc;
+}
+.space-card .space-muted {
+  color: #938da4;
+}
+.space-kind {
+  margin: 0 0 2px !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.space-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: #eeecf4;
+  background: rgba(7, 6, 15, 0.7);
+  border: 0;
+  border-radius: 50%;
+}
+.space-legend {
+  display: flex;
+  gap: 14px;
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: #cfcbdc;
+}
+.space-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.space-legend span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+.space-card .space-credits {
+  margin: 4px 0 0;
+  padding-top: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #938da4;
+  border-top: 1px solid rgba(183, 160, 238, 0.15);
+}
+.space-chips h3 {
+  margin: 4px 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #938da4;
+}
+.space-chips ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+.space-chips button {
+  padding: 3px 10px;
+  font-size: 13px;
+  color: #eeecf4;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid;
+  border-radius: 9999px;
+}
+.space-cover {
+  display: block;
+  width: calc(100% + 44px);
+  max-width: none;
+  height: 110px;
+  margin: -20px -22px 14px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 15px 15px 0 0;
+  border-bottom: 1px solid rgba(183, 160, 238, 0.25);
+}
+.space-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.space-title img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.space-chips button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.space-chips button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+.space-chips button:hover,
+.space-chips button:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+.space-cta {
+  display: block;
+  margin-top: 4px;
+  text-align: center;
+  font-weight: 600;
+  color: #c4b0ff;
+}
+.space-toast {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  z-index: 30;
+  margin: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #ffe8c8;
+  background: rgba(13, 12, 23, 0.85);
+  border: 1px solid rgba(255, 179, 107, 0.5);
+  border-radius: 9999px;
+  box-shadow: 0 0 24px rgba(255, 150, 80, 0.35);
+  transform: translateX(-50%);
+  animation: space-toast 5s ease forwards;
+}
+@keyframes space-toast {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  10%,
+  85% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* Warp flash that covers the screen while flying into a project. */
+.space-warp {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: radial-gradient(circle, #ffffff 0%, #d9ccff 25%, #7250bf 60%, #07060f 100%);
+  animation: space-warp 1.1s ease-in forwards;
+}
+@keyframes space-warp {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  70% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .space-warp {
+    animation: none;
+    opacity: 0;
+  }
+}
+@media (max-width: 640px) {
+  .space-open {
+    left: 16px;
+    bottom: 16px;
+  }
+  .space-audio {
+    right: 16px;
+    bottom: 16px;
+  }
+  .space-panel {
+    left: 16px;
+    bottom: 16px;
+    max-height: 45svh;
+  }
+  .space-card {
+    padding: 16px;
+  }
+}

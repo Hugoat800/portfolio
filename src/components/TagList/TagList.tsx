@@ -1,3 +1,4 @@
+import './TagList.css'
 export default function TagList({ items }: { items: string[] }) {
   return (
     <ul className="tag-list">

@@ -1,0 +1,26 @@
+.not-found {
+  padding-block: 180px;
+  min-height: 80vh;
+}
+.not-found a {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--accent);
+}
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  padding: 10px 15px;
+  z-index: 100;
+  background: var(--bg-surface);
+  transform: translateY(-150%);
+}
+.skip-link:focus {
+  transform: none;
+}
+.space-loading {
+  padding-top: 140px;
+  text-align: center;
+  color: var(--text-secondary);
+}

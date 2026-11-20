@@ -1,19 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { PROJECTS } from '../data/projects'
-import { SKILLS } from '../data/skills'
-import { TECHNOS } from '../data/technos'
-import { buildConstellation, type StarNode } from '../three/constellationData'
-import ConstellationScene, { STAR_COLORS } from '../three/ConstellationScene'
+import { PROJECTS } from '../../data/projects'
+import { SKILLS } from '../../data/skills'
+import { TECHNOS } from '../../data/technos'
+import { buildConstellation, type StarNode } from '../../three/constellationData'
+import ConstellationScene, { STAR_COLORS } from '../../three/ConstellationScene/ConstellationScene'
 import {
   MUSIC_MAX_VOLUME,
   playBlackHoleSound,
   playStarSound,
   playTravelSound,
-} from '../three/sound'
-import { useSpaceMusic } from '../three/useSpaceMusic'
-import { BLACK_HOLE_ID, SUCTION_DURATION } from '../three/BlackHole'
+} from '../../three/sound'
+import { useSpaceMusic } from '../../three/useSpaceMusic'
+import { BLACK_HOLE_ID, SUCTION_DURATION } from '../../three/BlackHole'
+import './Constellation3D.css'
 
 function hasWebGL() {
   try {

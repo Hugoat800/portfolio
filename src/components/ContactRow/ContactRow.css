@@ -1,0 +1,32 @@
+.contact-row {
+  padding: 18px 0;
+  border-top: 1px solid var(--border-default);
+}
+.contact-row > span {
+  display: block;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 9px;
+}
+.contact-row > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.contact-row a {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+.contact-row button {
+  font-size: 14px;
+  color: var(--accent);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+.contact-row > p {
+  font-size: 14px;
+  color: var(--accent);
+}

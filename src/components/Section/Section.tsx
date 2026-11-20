@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
+import './Section.css'
 export default function Section({ id, children }: { id: string; children: ReactNode }) {
   const { t } = useTranslation()
   return (

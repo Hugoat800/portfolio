@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { PROJECTS } from '../data/projects'
-import type { CompetenceId } from '../types'
-import { useContent } from '../hooks/useContent'
-import Section from './Section'
-import ProjectCard from './ProjectCard'
+import { PROJECTS } from '../../data/projects'
+import type { CompetenceId } from '../../types'
+import { useContent } from '../../hooks/useContent'
+import Section from '../Section/Section'
+import ProjectCard from '../ProjectCard/ProjectCard'
+import './Projets.css'
 export default function Projets() {
   const { t } = useTranslation()
   const content = useContent()

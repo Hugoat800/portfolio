@@ -1,8 +1,9 @@
 import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { PROJECTS } from '../data/projects'
-import { useContent } from '../hooks/useContent'
-import TagList from '../components/TagList'
+import { PROJECTS } from '../../data/projects'
+import { useContent } from '../../hooks/useContent'
+import TagList from '../../components/TagList/TagList'
+import './ProjectPage.css'
 export default function ProjectPage() {
   const { slug } = useParams()
   const { t } = useTranslation()
@@ -19,13 +20,13 @@ export default function ProjectPage() {
   const next = PROJECTS[(PROJECTS.indexOf(project) + 1) % PROJECTS.length]
   return (
     <article className="project-page container">
-      <div className="flex gap-4"> 
-      <Link className="btn-outline" to="/#projets">
-        {t('common.backProjects')}
-      </Link>
-      <Link className="btn-outline" to="/3d">
-        {t('common.backConstellation')}
-      </Link>
+      <div className="flex gap-4">
+        <Link className="btn-outline" to="/#projets">
+          {t('common.backProjects')}
+        </Link>
+        <Link className="btn-outline" to="/3d">
+          {t('common.backConstellation')}
+        </Link>
       </div>
       <header className="project-header">
         <p className="project-meta">

@@ -1,0 +1,82 @@
+.view-switch {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 9999px;
+  background: linear-gradient(120deg, #7250bf, #b7a0ee 45%, #6fc3ff);
+  background-size: 200% 100%;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 0 18px rgba(183, 160, 238, 0.55);
+  animation: view-switch-gradient 6s ease-in-out infinite;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+/* Light streak that sweeps across the button. */
+.view-switch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  animation: view-switch-shine 3.2s ease-in-out infinite;
+}
+.view-switch:hover,
+.view-switch:focus-visible {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset,
+    0 0 28px rgba(183, 160, 238, 0.85);
+}
+.view-switch--back {
+  color: var(--text-primary);
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--border-default) inset;
+  animation: none;
+}
+.view-switch--back::after {
+  display: none;
+}
+@keyframes view-switch-shine {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+@keyframes view-switch-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .view-switch,
+  .view-switch::after {
+    animation: none;
+  }
+}
+@media (max-width: 640px) {
+  .view-switch {
+    padding: 6px 11px;
+    font-size: 12px;
+  }
+}

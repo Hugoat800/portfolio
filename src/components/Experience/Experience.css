@@ -1,0 +1,35 @@
+.experience-list > li {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 55px;
+  padding: 35px 0;
+  border-top: 1px solid var(--border-default);
+}
+.experience-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--accent);
+}
+.experience-organization {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.experience-list h3 {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.experience-list div > p:not(.experience-organization) {
+  max-width: 650px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+@media (max-width: 640px) {
+  .experience-list > li {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-block: 25px;
+  }
+}

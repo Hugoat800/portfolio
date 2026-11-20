@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import Section from './Section'
-import TagList from './TagList'
+import Section from '../Section/Section'
+import TagList from '../TagList/TagList'
+import './APropos.css'
 export default function APropos() {
   const { t } = useTranslation()
   const paragraphs = t('about.paragraphs', { returnObjects: true }) as string[]

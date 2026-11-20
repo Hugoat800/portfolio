@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { SKILLS } from '../data/skills'
-import { PROJECTS } from '../data/projects'
-import { useContent } from '../hooks/useContent'
-import Section from './Section'
+import { SKILLS } from '../../data/skills'
+import { PROJECTS } from '../../data/projects'
+import { useContent } from '../../hooks/useContent'
+import Section from '../Section/Section'
+import './Competences.css'
 export default function Competences() {
   const { t } = useTranslation()
   const content = useContent()

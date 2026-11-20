@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import type { CompetenceId, Project } from '../types'
-import { useContent } from '../hooks/useContent'
-import TagList from './TagList'
+import type { CompetenceId, Project } from '../../types'
+import { useContent } from '../../hooks/useContent'
+import TagList from '../TagList/TagList'
+import './ProjectCard.css'
 export default function ProjectCard({
   project,
   onSkillClick,

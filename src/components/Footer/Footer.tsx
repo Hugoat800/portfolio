@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
-import { PROFILE } from '../data/profile'
+import { PROFILE } from '../../data/profile'
 import { Link } from 'react-router-dom'
+import './Footer.css'
 export default function Footer() {
   const { t } = useTranslation()
   return (

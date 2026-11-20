@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { NAVIGATION, PROFILE } from '../data/profile'
-import type { Theme } from '../hooks/useTheme'
-import ThemeToggle from './ThemeToggle'
-import LanguageSwitcher from './LanguageSwitcher'
-import ViewSwitch from './ViewSwitch'
+import { NAVIGATION, PROFILE } from '../../data/profile'
+import type { Theme } from '../../hooks/useTheme'
+import ThemeToggle from '../ThemeToggle/ThemeToggle'
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher'
+import ViewSwitch from '../ViewSwitch/ViewSwitch'
+import './Navbar.css'
 export default function Navbar({
   activeId,
   theme,

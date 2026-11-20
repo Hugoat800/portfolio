@@ -20,7 +20,8 @@ npm run format
 - `src/data/skills.ts` : compétences et niveaux acquis.
 - `src/data/technos.ts` : technologies, logos et catégories.
 - `src/i18n/locales/fr.json` et `en.json` : tous les textes, contenus des projets et du parcours, libellés et métadonnées.
-- `src/index.css` : palette, composants et adaptation aux différentes tailles d’écran.
+- `src/index.css` : directives Tailwind et variables des thèmes sombre et clair (couleurs du site, de la fenêtre de la constellation et des boutons audio).
+- `src/styles/global.css` : styles de base et classes partagées (conteneur, boutons, filtres).
 
 Pour ajouter un projet, ajouter une entrée dans `projects.ts`, puis son contenu sous `projects.<slug>` dans **les deux fichiers de traduction**. La route `/projet/<slug>`, la carte, les filtres, les liens depuis les compétences et le projet suivant sont générés automatiquement.
 
@@ -30,13 +31,23 @@ Chaque contenu projet contient `title`, `context`, `description`, `sections` (ti
 
 i18next et react-i18next gèrent les traductions, les pluriels et les interpolations. Le sélecteur FR/EN est accessible sur toutes les pages. Le choix est mémorisé ; à la première visite, la langue du navigateur détermine FR ou EN. La langue française sert de repli. Les noms propres, technologies et identifiants ne sont pas traduits. Le CV fourni reste en français et son lien l’indique.
 
-Pour une troisième langue : créer un fichier JSON avec la même structure, l’enregistrer dans `src/i18n/index.ts` et ajouter son bouton dans `LanguageSwitcher.tsx`.
+Pour une troisième langue : créer un fichier JSON avec la même structure, l’enregistrer dans `src/i18n/index.ts` et ajouter son bouton dans `LanguageSwitcher/LanguageSwitcher.tsx`.
 
 ## Structure
 
+Chaque composant a son dossier avec trois fichiers : `Nom.tsx`, `Nom.css` (ses styles, importés par le composant) et `Nom.test.tsx`. Les pages suivent la même règle dans `src/pages`.
+
+Pour créer un composant, utiliser la CLI configurée dans `generate-react-cli.json` :
+
+```bash
+npx generate-react-cli component NomDuComposant
+```
+
+Les tests de composants utilisent Vitest et Testing Library : `npm test` lance tout, `npm run test:components` les relance à chaque modification.
+
 ### Fond animé réutilisable
 
-`src/components/backgrounds/ContourBackground.tsx` et son fichier CSS forment un composant autonome, sans bibliothèque d'animation. Il dessine des courbes SVG qui ondulent lentement et reprend la couleur du thème.
+`src/components/ContourBackground/ContourBackground.tsx` et son fichier CSS forment un composant autonome, sans bibliothèque d'animation. Il dessine des courbes SVG qui ondulent lentement et reprend la couleur du thème.
 
 ```tsx
 <section style={{ position: 'relative', isolation: 'isolate', overflow: 'hidden' }}>

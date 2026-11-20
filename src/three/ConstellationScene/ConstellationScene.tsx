@@ -3,8 +3,15 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Html, Line, OrbitControls, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
-import type { ConstellationGraph, StarKind, StarNode } from './constellationData'
-import { BLACK_HOLE_ID, BLACK_HOLE_POSITION, BlackHole, HiddenStar, suctionPose } from './BlackHole'
+import type { ConstellationGraph, StarKind, StarNode } from '../constellationData'
+import {
+  BLACK_HOLE_ID,
+  BLACK_HOLE_POSITION,
+  BlackHole,
+  HiddenStar,
+  suctionPose,
+} from '../BlackHole'
+import './ConstellationScene.css'
 
 export const STAR_COLORS: Record<StarKind, string> = {
   project: '#c4b0ff',

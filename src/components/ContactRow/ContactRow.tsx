@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import './ContactRow.css'
 export default function ContactRow({
   label,
   value,

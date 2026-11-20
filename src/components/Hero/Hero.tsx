@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { PROFILE } from '../data/profile'
+import { PROFILE } from '../../data/profile'
+import './Hero.css'
 export default function Hero() {
   const { t } = useTranslation()
   return (

@@ -1,0 +1,28 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 45px 30px;
+}
+.active-filter {
+  background: var(--bg-elevated);
+  color: var(--accent);
+  border: 1px solid var(--border-subtle);
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+.result-count {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 14px 0 25px;
+}
+.empty-state {
+  color: var(--text-secondary);
+  padding-block: 40px;
+}
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+}

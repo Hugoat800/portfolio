@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import type { Theme } from '../hooks/useTheme'
+import type { Theme } from '../../hooks/useTheme'
+import './ThemeToggle.css'
 export default function ThemeToggle({ theme, onToggle }: { theme: Theme; onToggle: () => void }) {
   const { t } = useTranslation()
   const isDark = theme === 'dark'

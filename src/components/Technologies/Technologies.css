@@ -1,0 +1,29 @@
+.technology-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0 26px;
+}
+.technology-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 19px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 14px;
+}
+.technology-list img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+@media (max-width: 1230px) {
+  .technology-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .technology-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 16px;
+  }
+}
